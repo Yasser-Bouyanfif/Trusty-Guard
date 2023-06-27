@@ -10,9 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_27_093100) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_27_105923) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "agents", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.date "birth_date"
+    t.string "email"
+    t.string "phone_number"
+    t.string "address"
+    t.string "iban"
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_agents_on_user_id"
+  end
+
+  create_table "availability", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "agent_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agent_id"], name: "index_availability_on_agent_id"
+  end
+
+  create_table "missions", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "number_of_agents"
+    t.string "event_type"
+    t.integer "budget"
+    t.string "comment"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_missions_on_user_id"
+  end
+
+  create_table "teams_missions", force: :cascade do |t|
+    t.bigint "agent_id", null: false
+    t.bigint "mission_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agent_id"], name: "index_teams_missions_on_agent_id"
+    t.index ["mission_id"], name: "index_teams_missions_on_mission_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +68,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_093100) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.string "siret"
+    t.string "phone_number"
+    t.string "name"
+    t.string "category"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "agents", "users"
+  add_foreign_key "availability", "agents"
+  add_foreign_key "missions", "users"
+  add_foreign_key "teams_missions", "agents"
+  add_foreign_key "teams_missions", "missions"
 end

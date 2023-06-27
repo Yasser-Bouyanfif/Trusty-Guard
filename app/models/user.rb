@@ -3,4 +3,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  TYPE = ["Security Company", "Customer Company"].freeze
+  validates :category, inclusion: { in: TYPE }
 end
