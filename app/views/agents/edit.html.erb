@@ -1,0 +1,10 @@
+<h3>Modifier un agent</h3>
+<%= simple_form_for (@agent) do |f| %>
+  <%= f.input :last_name %>
+  <%= f.input :first_name %>
+  <%= f.input :birth_date %>
+  <%= f.input :email %>
+  <%= f.input :address %>
+  <%= f.input :status %>
+  <%= f.button :submit %>
+<% end %>
