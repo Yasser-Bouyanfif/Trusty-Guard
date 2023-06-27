@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   TYPE = ["Security Company", "Customer Company"].freeze
   validates :category, inclusion: { in: TYPE }
+  has_many :messages
+  has_many :missions
 end
