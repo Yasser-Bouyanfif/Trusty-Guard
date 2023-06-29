@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :missions, only: [:new, :create]
   resources :agents
+  
 end
