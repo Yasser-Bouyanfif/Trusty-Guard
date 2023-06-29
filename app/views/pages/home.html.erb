@@ -1,2 +1,20 @@
-<%= link_to 'Create a new mission', new_mission_path %>
-<%= link_to 'Agents', agents_path %>
+
+
+<% if user_signed_in? %>
+  <%# <h1>Bienvenue sur la page d'accueil de la société <%= current_user.name %></h1>
+
+  <% if current_user.category == "Security Company" %>
+  <%# <p>je suis un prestataire</p> %>
+
+  <%= render "shared/dashboard_prestataire" %>
+
+  <% end %>
+
+  <% if current_user.category == "Customer Company" %>
+
+  <p>je suis un client</p>
+
+  <% end %>
+<% end %>
+
+
