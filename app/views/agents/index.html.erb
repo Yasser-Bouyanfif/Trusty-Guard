@@ -2,10 +2,16 @@
 
   <h1> Mes agents </h1>
   <div class="d-flex justify-content-between">
-      <form class="d-flex" role="search">
-        <input class="form-control me-2 rounded-4" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success rounded-4" type="submit">Search</button>
-      </form>
+
+          <%= form_with(url: search_agents_path, method: :get, local: true, class: "d-flex") do |form| %>
+          <%= form.text_field :query, placeholder: 'Search by name', class:"form-control me-2 rounded-4" %>
+          <%= form.submit "search", class: "btn btn-outline-success rounded-4" %>
+          <% if params[:query].present? %>
+            <%= link_to "Clear", agents_path, class: "btn btn-outline-danger rounded-4" %>
+          <% end %>
+          <% end %>
+
+
       <%= link_to 'Ajouter un agent', new_agent_path, class: "btn btn-outline-primary rounded-4", role: "button" %>
     </div>
 
@@ -36,15 +42,16 @@
           <td><%= agent.first_name %></td>
           <td><%= agent.birth_date %></td>
           <td><%= agent.email %></td>
-          <td><%= agent.address %></td>
+          <td class="" style="background-color: rgb(33, 37, 41);"><%= agent.address %></td>
           <td><%= agent.status %></td>
-          <td>
-            <%= link_to 'Voir', agent_path(agent) %>
-            <%= link_to 'Editer', edit_agent_path(agent) %>
-            <%= link_to 'Supprimer', agent_path(agent),
-                method: :delete,
-                data: { confirm: 'Etes-vous sûr de vouloir supprimer cet agent ?' } %>
+          <td colspan="2">
+            <%= link_to edit_agent_path(agent) do %>
+            <i class="fa-light fa-pen-to-square"></i>
+          <% end %>
+                      <%= link_to "supprimer", agent_path(agent), data: {turbo_method: :delete, turbo_confirm: 'Are u sure about that ?'} %>
+
           </td>
+          <td><%= link_to 'Voir', agent_path(agent) %></td>
         </tr>
       <% end %>
     </tbody>

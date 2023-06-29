@@ -1,2 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% if user_signed_in? %>
+  <h1>Bienvenue sur la page d'accueil de la société <%= current_user.name %></h1>
+
+  <% if current_user.category == "Security Company" %>
+  <p>je suis un prestataire</p>
+
+  <% end %>
+
+  <% if current_user.category == "Customer Company" %>
+
+  <p>je suis un client</p>
+
+  <% end %>
+<% end %>

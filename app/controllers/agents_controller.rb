@@ -1,6 +1,5 @@
 class AgentsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_agent, only: [:show, :edit, :update, :destroy]
+  before_action :set_agent, only: %i[ show edit update destroy ]
 
   def index
     @agents = Agent.all
@@ -20,11 +19,12 @@ class AgentsController < ApplicationController
     @agent = Agent.new(agent_params)
     @agent.user = current_user
     if @agent.save
-      redirect_to @agent, notice: 'Agent was successfully created.'
+      redirect_to agent_path(@agent), notice: 'Agent was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
+
 
   def update
     if @agent.update(agent_params)
@@ -39,10 +39,21 @@ class AgentsController < ApplicationController
     redirect_to agents_url, notice: 'Agent was successfully destroyed.'
   end
 
+  def search
+    @results = Agent.search_by_name(params[:query])
+    if @results.empty?
+      flash[:alert] = "No results found"
+      redirect_to agents_path
+    else
+      @agents = @results
+      render :index
+    end
+  end
+
   private
 
   def agent_params
-    params.require(:agent).permit(:user_id, :first_name, :last_name, :birth_date, :email, :phone_number, :address, :iban, :status)
+    params.require(:agent).permit(:first_name, :last_name, :birth_date, :email, :phone_number, :address, :iban, :status)
   end
 
   def set_agent
