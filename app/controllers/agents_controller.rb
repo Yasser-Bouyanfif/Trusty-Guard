@@ -1,51 +1,44 @@
 class AgentsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_agent, only: [:show, :edit, :update, :destroy]
 
   def index
     @agents = Agent.all
-  end
-
-  def show
   end
 
   def new
     @agent = Agent.new
   end
 
-  def edit
-  end
-
   def create
     @agent = Agent.new(agent_params)
     @agent.user = current_user
     if @agent.save
-      redirect_to @agent, notice: 'Agent was successfully created.'
+      redirect_to agents_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
+  def edit
+    @agent = Agent.find(params[:id])
+  end
+
   def update
-    if @agent.update(agent_params)
-      redirect_to @agent, notice: 'Agent was successfully updated.'
+    if @agent.save
+      redirect_to agents_path
     else
       render :edit
     end
   end
 
   def destroy
+    @agent = Agent.find(params[:id])
     @agent.destroy
-    redirect_to agents_url, notice: 'Agent was successfully destroyed.'
+    redirect_to agents_path
   end
 
   private
 
   def agent_params
-    params.require(:agent).permit(:user_id, :first_name, :last_name, :birth_date, :email, :phone_number, :address, :iban, :status)
-  end
-
-  def set_agent
-    @agent = Agent.find(params[:id])
+    params.require(:agent).permit(:first_name, :last_name, :birth_date, :email, :phone_number, :address, :iban)
   end
 end

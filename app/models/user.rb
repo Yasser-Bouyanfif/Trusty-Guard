@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :category, inclusion: { in: TYPE }
   has_many :messages
   has_many :missions
+  has_many :agents
 end
