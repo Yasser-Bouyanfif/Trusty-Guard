@@ -1,0 +1,19 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow">
+        <h3>Edit a agent</h3>
+        <%= simple_form_for (@agent) do |f| %>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :birth_date, html5: true %>
+          <%= f.input :address %>
+          <%= f.input :email %>
+          <%= f.input :phone_number %>
+          <%= f.input :iban %>
+          <%= f.submit class: 'btn btn-secondary' %>
+        <% end%>
+      </div>
+    </div>
+  </div>
+</div>
