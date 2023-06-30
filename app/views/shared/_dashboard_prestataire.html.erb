@@ -1,34 +1,3 @@
-<section id="sidebar">
-    <ul class="side-menu top">
-        <li class="active">
-            <a href="#">
-                <i class='bx bxs-dashboard'></i>
-                <span class="text">Offres</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bxs-shopping-bag-alt'></i>
-                <span class="text">Agents</span>
-            </a>
-        </li>
-        <ul class="side-menu">
-            <li>
-                <a href="#">
-                    <i class='bx bxs-cog'></i>
-                    <span class="text">Settings</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="logout">
-                    <i class='bx bxs-log-out-circle'></i>
-                    <span class="text">Logout</span>
-                </a>
-            </li>
-        </ul>
-    </ul>
-</section>
-<!-- SIDEBAR -->
 
 <!-- CONTENT -->
 <section id="content">
@@ -39,11 +8,11 @@
                 <h1>Offres</h1>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="#">Dashboard</a>
+                        <%= link_to 'Agents', agents_path, class: "active" %>
                     </li>
                     <li><i class='bx bx-chevron-right'></i></li>
                     <li>
-                        <a class="active" href="#">Home</a>
+                       <%= link_to 'Create a new mission', new_mission_path, class: "active" %>
                     </li>
                 </ul>
             </div>
@@ -65,20 +34,26 @@
                     <thead>
                         <tr>
                             <th>Offres</th>
-                            <th>Date</th>
+                            <th>Début</th>
+                            <th>Fin</th>
+                            <th>Nom</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <% @missions.each do |mission| %>
                         <tr>
                             <td>
-                                <!-- <img src="img/people.png"> -->
-                                <p>John Doe</p>
+                                <!-- <iig src="img/people.png"> -->
+                                <p><%= mission.event_type %></p>
                             </td>
-                            <td>01-10-2021</td>
+                            <td><%= mission.start_date %></td>
+                            <td><%= mission.end_date %></td>
+                            <td><%= mission.user.name %></td>
                             <td><span class="status completed">Completed</span></td>
                         </tr>
-                        <tr>
+                        <% end %>
+                        <%# <tr>
                             <td>
                                 <!-- <img src="img/people.png"> -->
                                 <p>John Doe</p>
@@ -109,7 +84,7 @@
                             </td>
                             <td>01-10-2021</td>
                             <td><span class="status completed">Completed</span></td>
-                        </tr>
+                        </tr> %>
                     </tbody>
                 </table>
             </div>

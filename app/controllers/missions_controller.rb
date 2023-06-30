@@ -1,4 +1,5 @@
 class MissionsController < ApplicationController
+
   def new
     @mission = Mission.new
   end

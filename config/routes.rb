@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :missions, only: [:new, :create]
+  resources :missions, only: [:new, :create] do
+    resources :estimates, only: [:new, :create]
+  end
   resources :agents
-  
 end
