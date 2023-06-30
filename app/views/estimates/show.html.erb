@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      Devis
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><p>Date de début : <%= @estimate.start_date %></li> </p>
+      <li class="list-group-item"><p>Date de fin : <%= @estimate.end_date  %></li> </p>
+      <li class="list-group-item"><p>Nombre d'agents : <%= @estimate.number_of_agents %></li> </p>
+      <li class="list-group-item"><p>Commentaires : <%= @estimate.comment %></li> </p>
+      <li class="list-group-item"><p>Prix : <%= @estimate.price %></li> </p>
+      <li class="list-group-item"><p>ID de l'utilisateur : <%= @estimate.user_id %></li> </p>
+      <li class="list-group-item"><p>ID de la mission : <%= @estimate.mission_id %></li> </p>
+      <li class="list-group-item"><p>Crée le : <%= @estimate.created_at %></li> </p>
+      <li class="list-group-item"><p>Modifié le : <%= @estimate.updated_at %></li> </p>
+      <li class="list-group-item"><p>Statut : <%= @estimate.updated_at %></li> </p>
+    </ul>
+  </div>
+  <td><button type="button" class="btn btn-success">Accepter</button> <button type="button" class="btn btn-danger">Refuser</button></td>
+</div>
