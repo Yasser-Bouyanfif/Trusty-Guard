@@ -20,4 +20,5 @@ class MissionsController < ApplicationController
   def mission_params
     params.require(:mission).permit(:start_date, :end_date, :number_of_agents, :event_type, :budget, :comment)
   end
+
 end

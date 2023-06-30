@@ -4,5 +4,6 @@ class PagesController < ApplicationController
   def home
     @missions = Mission.all
     @user = current_user
+    @estimates = Estimate.all
   end
 end

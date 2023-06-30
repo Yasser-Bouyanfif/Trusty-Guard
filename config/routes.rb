@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :missions, only: [:new, :create, :show] do
-    resources :estimates, only: [:new, :create]
+    resources :estimates, only: [:new, :create, :show]
   end
   resources :agents
+  post '/agents/search', to: 'agents#search'
 end
