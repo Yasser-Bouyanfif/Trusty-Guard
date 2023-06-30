@@ -1,119 +1,64 @@
-
 <!-- CONTENT -->
 <section id="content">
     <!-- MAIN -->
     <main>
         <div class="head-title">
             <div class="left">
-                <h1>Offres</h1>
+                <h1><%= @user.name %></h1>
                 <ul class="breadcrumb">
                     <li>
-                        <%= link_to 'Agents', agents_path, class: "active" %>
+                        <%= link_to 'Mes Agents', agents_path, class: "btn-download text-white active" %>
                     </li>
                     <li><i class='bx bx-chevron-right'></i></li>
-                    <li>
-                       <%= link_to 'Create a new mission', new_mission_path, class: "active" %>
-                    </li>
                 </ul>
             </div>
-            <a href="#" class="btn-download">
-                <i class='bx bxs-cloud-download'></i>
-                <span class="text">Download PDF</span>
-            </a>
         </div>
 
 
         <div class="table-data">
-            <div class="order">
+            <div class="order shadow-lg">
                 <div class="head">
                     <h3>Offres récentes</h3>
-                    <i class='bx bx-search'></i>
-                    <i class='bx bx-filter'></i>
+                    <a href="#" class="btn-download">
+                        <i class='bx bxs-cloud-download'></i>
+                        <span class="text">Voir tout</span>
+                    </a>
                 </div>
                 <table>
                     <thead>
                         <tr>
+                            <th>Nom</th>
                             <th>Offres</th>
                             <th>Début</th>
                             <th>Fin</th>
-                            <th>Nom</th>
-                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% @missions.each do |mission| %>
                         <tr>
+                            <td class="m-2"><%= mission.user.name %></td>
                             <td>
-                                <!-- <iig src="img/people.png"> -->
-                                <p><%= mission.event_type %></p>
+                                <p class="m-2"><%= mission.event_type %></p>
                             </td>
                             <td><%= mission.start_date %></td>
                             <td><%= mission.end_date %></td>
-                            <td><%= mission.user.name %></td>
-                            <td><span class="status completed">Completed</span></td>
                         </tr>
                         <% end %>
-                        <%# <tr>
-                            <td>
-                                <!-- <img src="img/people.png"> -->
-                                <p>John Doe</p>
-                            </td>
-                            <td>01-10-2021</td>
-                            <td><span class="status pending">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <!-- <img src="img/people.png"> -->
-                                <p>John Doe</p>
-                            </td>
-                            <td>01-10-2021</td>
-                            <td><span class="status process">Process</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <!-- <img src="img/people.png"> -->
-                                <p>John Doe</p>
-                            </td>
-                            <td>01-10-2021</td>
-                            <td><span class="status pending">Pending</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <!-- <img src="img/people.png"> -->
-                                <p>John Doe</p>
-                            </td>
-                            <td>01-10-2021</td>
-                            <td><span class="status completed">Completed</span></td>
-                        </tr> %>
                     </tbody>
                 </table>
             </div>
-            <div class="todo">
+            <div class="todo shadow-lg">
                 <div class="head">
-                    <h3>Todos</h3>
-                    <i class='bx bx-plus'></i>
-                    <i class='bx bx-filter'></i>
+                    <h3>Boite de réception</h3>
                 </div>
                 <ul class="todo-list">
                     <li class="completed">
-                        <p>Todo List</p>
-                        <i class='bx bx-dots-vertical-rounded'></i>
-                    </li>
-                    <li class="completed">
-                        <p>Todo List</p>
-                        <i class='bx bx-dots-vertical-rounded'></i>
+                        <small><p>Nom de l'entreprise</p></small>
+                        <p>message</p>
                     </li>
                     <li class="not-completed">
-                        <p>Todo List</p>
-                        <i class='bx bx-dots-vertical-rounded'></i>
-                    </li>
-                    <li class="completed">
-                        <p>Todo List</p>
-                        <i class='bx bx-dots-vertical-rounded'></i>
-                    </li>
-                    <li class="not-completed">
-                        <p>Todo List</p>
-                        <i class='bx bx-dots-vertical-rounded'></i>
+                        <small><p>Nom de l'entreprise</p></small>
+                        <p>message</p>
                     </li>
                 </ul>
             </div>
