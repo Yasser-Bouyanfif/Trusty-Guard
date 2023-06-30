@@ -1,0 +1,41 @@
+<div class="container mt-5 ">
+    <div class="row">
+        <div class="col-12">
+            <div class="bg-white p-5 rounded-4 shadow-lg text-center card">
+                <div class="row gap-5 justify-content-center">
+                    <div class="col-6 card p-3 shadow-lg">
+                        <h1>
+                            <%= @mission.event_type %>
+                        </h1>
+                        <%= link_to "Faire un devis" , new_mission_estimate_path(@mission),
+                            class: "btn btn-outline-primary rounded" %>
+                    </div>
+
+                    <div class="col-6 card p-3 shadow-lg w-25">
+                        <p>
+                           Debut : <%= @mission.start_date %>
+                        </p>
+                        <p>
+                           Fin : <%= @mission.end_date %>
+                        </p>
+                        <p>
+                           Agents : <%= @mission.number_of_agents %>
+                        </p>
+                        <p>
+                            Budget : <%= @mission.budget %>
+                        </p>
+                        
+                    </div>
+
+                    <div class="col-12 mt-5 card shadow-lg p-3">
+                        <h4 class="text-center">Commentaire</h4>
+                        <p>
+                            <%= @mission.comment %>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
