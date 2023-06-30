@@ -20,6 +20,6 @@ class EstimatesController < ApplicationController
   private
 
   def estimate_params
-    params.require(:estimate).permit(:start_date, :end_date, :number_of_agents, :event_type, :budget, :comment, :mission_id)
+    params.require(:estimate).permit(:start_date, :end_date, :number_of_agents, :price, :comment, :mission_id)
   end
 end
