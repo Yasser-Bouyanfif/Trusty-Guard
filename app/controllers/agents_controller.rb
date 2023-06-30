@@ -23,7 +23,8 @@ class AgentsController < ApplicationController
   end
 
   def update
-    if @agent.save
+    @agent = Agent.find(params[:id])
+    if @agent.update(agent_params)
       redirect_to agents_path
     else
       render :edit
