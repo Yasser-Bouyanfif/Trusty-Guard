@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @missions = Mission.all
+    @user = current_user
   end
 end
