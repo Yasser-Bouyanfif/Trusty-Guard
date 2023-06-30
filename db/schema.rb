@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_29_101627) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_29_125115) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,6 +35,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_101627) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["agent_id"], name: "index_availability_on_agent_id"
+  end
+
+  create_table "estimates", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "number_of_agents"
+    t.string "event_type"
+    t.integer "budget"
+    t.string "comment"
+    t.boolean "accepted", default: false
+    t.bigint "user_id", null: false
+    t.bigint "mission_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mission_id"], name: "index_estimates_on_mission_id"
+    t.index ["user_id"], name: "index_estimates_on_user_id"
   end
 
   create_table "missions", force: :cascade do |t|
@@ -78,6 +94,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_101627) do
 
   add_foreign_key "agents", "users"
   add_foreign_key "availability", "agents"
+  add_foreign_key "estimates", "missions"
+  add_foreign_key "estimates", "users"
   add_foreign_key "missions", "users"
   add_foreign_key "teams_missions", "agents"
   add_foreign_key "teams_missions", "missions"
