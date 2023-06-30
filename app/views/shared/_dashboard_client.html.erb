@@ -41,8 +41,7 @@
                             <td><%= e.start_date %></td>
                             <td><%= e.end_date %></td>
                             <td><%= e.price %>€</td>
-                            <%= link_to "show devis", root_path %>
-                              <%= content_tag :i, '' , class: 'fa-solid fa-eye text-dark' %>
+                              <td><%= link_to "<i class='fa-solid fa-eye text-dark'>".html_safe, root_path %></td>
                             <%# <td><button type="button" class="btn btn-success">Success</button> <button type="button" class="btn btn-danger">Danger</button></td> %>
                         </tr>
                         <% end %>
