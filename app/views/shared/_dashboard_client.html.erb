@@ -1,0 +1,70 @@
+<!-- CONTENT -->
+<section id="content">
+    <!-- MAIN -->
+    <main>
+        <div class="head-title">
+            <div class="left">
+                <h1><%= @user.name %></h1>
+                <ul class="breadcrumb">
+                    <li>
+                        <%= link_to 'Postuler pour une mission', new_mission_path, class: "btn-download text-white active" %>
+                    </li>
+                    <li><i class='bx bx-chevron-right'></i></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="table-data">
+            <div class="order shadow-lg">
+                <div class="head">
+                    <h3>Devis reçus</h3>
+                    <a href="#" class="btn-download">
+                        <i class='bx bxs-cloud-download'></i>
+                        <span class="text">Voir tout</span>
+                    </a>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Début</th>
+                            <th>Fin</th>
+                            <th>Prix</th>
+                            <th>Voir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @estimates.each do |e| %>
+                        <tr>
+                            <td class="m-2"><%= e.user.name %></td>
+                            <td><%= e.start_date %></td>
+                            <td><%= e.end_date %></td>
+                            <td><%= e.price %>€</td>
+                            <%= link_to "show devis", root_path %>
+                              <%= content_tag :i, '' , class: 'fa-solid fa-eye text-dark' %>
+                            <%# <td><button type="button" class="btn btn-success">Success</button> <button type="button" class="btn btn-danger">Danger</button></td> %>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="todo shadow-lg">
+                <div class="head">
+                    <h3>Boite de réception</h3>
+                </div>
+                <ul class="todo-list">
+                    <li class="completed">
+                        <small><p>Nom de l'entreprise</p></small>
+                        <p>message</p>
+                    </li>
+                    <li class="not-completed">
+                        <small><p>Nom de l'entreprise</p></small>
+                        <p>message</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <!-- MAIN -->
+</section>

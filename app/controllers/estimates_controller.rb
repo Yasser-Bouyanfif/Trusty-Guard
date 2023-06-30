@@ -17,6 +17,11 @@ class EstimatesController < ApplicationController
     end
   end
 
+  def show
+    @estimate = Estimate.find(params[:id])
+    @mission = Mission.find(params[:mission_id])
+  end
+
   private
 
   def estimate_params
