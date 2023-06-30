@@ -11,6 +11,10 @@ class MissionsController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @mission = Mission.find(params[:id])
+  end
+
   private
 
   def mission_params
