@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= csrf_meta_tags %>
+    <meta name="csrf-token" content="<%= form_authenticity_token %>">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", "data-turbo-frame": "agent-search-form", defer: true %>
   </head>
 
   <body><%= render "shared/navbar" %>

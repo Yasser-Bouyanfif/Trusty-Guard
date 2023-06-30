@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     resources :estimates, only: [:new, :create]
   end
   resources :agents
+  post '/agents/search', to: 'agents#search'
 end
