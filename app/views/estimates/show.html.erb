@@ -1,20 +1,19 @@
-<div class="container">
-  <div class="card" style="width: 18rem;">
-    <div class="card-header">
+<div class="container d-flex justify-content-center">
+  <div class="card bg-light shadow m-5 rounded-4" style="width: 28rem;">
+    <div class="card-header text-center">
       Devis
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item"><p>Date de début : <%= @estimate.start_date %></li> </p>
-      <li class="list-group-item"><p>Date de fin : <%= @estimate.end_date  %></li> </p>
-      <li class="list-group-item"><p>Nombre d'agents : <%= @estimate.number_of_agents %></li> </p>
-      <li class="list-group-item"><p>Commentaires : <%= @estimate.comment %></li> </p>
-      <li class="list-group-item"><p>Prix : <%= @estimate.price %></li> </p>
-      <li class="list-group-item"><p>ID de l'utilisateur : <%= @estimate.user_id %></li> </p>
-      <li class="list-group-item"><p>ID de la mission : <%= @estimate.mission_id %></li> </p>
-      <li class="list-group-item"><p>Crée le : <%= @estimate.created_at %></li> </p>
-      <li class="list-group-item"><p>Modifié le : <%= @estimate.updated_at %></li> </p>
-      <li class="list-group-item"><p>Statut : <%= @estimate.updated_at %></li> </p>
+    <ul class="list-group list-group-flush text-center drop-shadow">
+      <li class="list-group-item">Date de début : <%= @estimate.start_date %></li>
+      <li class="list-group-item">Date de fin : <%= @estimate.end_date %></li>
+      <li class="list-group-item">Nombre d'agents : <%= @estimate.number_of_agents %></li>
+      <li class="list-group-item">Commentaires : <%= @estimate.comment %></li>
+      <li class="list-group-item">Prix : <%= @estimate.price %>€</li>
+     
     </ul>
+    <div class="card-footer d-flex justify-content-between p-4">
+      <%# <button type="button" class="btn btn-success">Accepter</button>
+      <button type="button" class="btn btn-danger">Refuser</button> %>
+    </div>
   </div>
-  <td><button type="button" class="btn btn-success">Accepter</button> <button type="button" class="btn btn-danger">Refuser</button></td>
 </div>
