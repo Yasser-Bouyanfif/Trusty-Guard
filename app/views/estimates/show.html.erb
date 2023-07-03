@@ -12,6 +12,8 @@
 
     </ul>
     <div class="card-footer d-flex justify-content-between p-4">
+    Liste des agents disponibles:
+    
       <%= simple_form_for [@mission, @contract] do |f |%>
     <% @agents.each do |agent| %>
         <label for=""><%= agent.first_name %></label>
