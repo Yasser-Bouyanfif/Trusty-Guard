@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :missions, only: [:new, :create, :show] do
     resources :estimates, only: [:new, :create, :show]
   end
+
+  # resources :estimates, only: [:show]
   resources :agents
   post '/agents/search', to: 'agents#search'
 end
