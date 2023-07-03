@@ -16,5 +16,14 @@
       <li class="list-group-item"><p>Statut : <%= @estimate.updated_at %></li> </p>
     </ul>
   </div>
-  <td><button type="button" class="btn btn-success">Accepter</button> <button type="button" class="btn btn-danger">Refuser</button></td>
-</div>
+  <%= simple_form_for [@mission, @contract] do |f |%>
+    <% @agents.each do |agent| %>
+        <label for=""><%= agent.first_name %></label>
+        <div class="form-input col-2">
+          <input type="checkbox" name="agents[]" id="agent" value="<%= agent.id %>">
+        </div>
+      <% end %>
+
+      <%= hidden_field_tag(:estimate_id, @estimate.id) %>
+           <%= f.button :submit %>
+  <% end %>

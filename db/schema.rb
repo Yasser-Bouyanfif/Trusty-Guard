@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_30_084016) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_03_115334) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,13 +28,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_30_084016) do
     t.index ["user_id"], name: "index_agents_on_user_id"
   end
 
-  create_table "availability", force: :cascade do |t|
+  create_table "availabilities", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
     t.bigint "agent_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["agent_id"], name: "index_availability_on_agent_id"
+    t.index ["agent_id"], name: "index_availabilities_on_agent_id"
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.bigint "agent_id", null: false
+    t.bigint "mission_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agent_id"], name: "index_contracts_on_agent_id"
+    t.index ["mission_id"], name: "index_contracts_on_mission_id"
   end
 
   create_table "estimates", force: :cascade do |t|
@@ -47,7 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_30_084016) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price"
-    t.string "status", default: "pending"
+    t.integer "disabled", default: 0
     t.index ["mission_id"], name: "index_estimates_on_mission_id"
     t.index ["user_id"], name: "index_estimates_on_user_id"
   end
@@ -64,15 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_30_084016) do
     t.datetime "updated_at", null: false
     t.integer "disabled", default: 0
     t.index ["user_id"], name: "index_missions_on_user_id"
-  end
-
-  create_table "teams_missions", force: :cascade do |t|
-    t.bigint "agent_id", null: false
-    t.bigint "mission_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["agent_id"], name: "index_teams_missions_on_agent_id"
-    t.index ["mission_id"], name: "index_teams_missions_on_mission_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,10 +93,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_30_084016) do
   end
 
   add_foreign_key "agents", "users"
-  add_foreign_key "availability", "agents"
+  add_foreign_key "availabilities", "agents"
+  add_foreign_key "contracts", "agents"
+  add_foreign_key "contracts", "missions"
   add_foreign_key "estimates", "missions"
   add_foreign_key "estimates", "users"
   add_foreign_key "missions", "users"
-  add_foreign_key "teams_missions", "agents"
-  add_foreign_key "teams_missions", "missions"
 end
