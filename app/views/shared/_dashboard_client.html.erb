@@ -35,14 +35,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% @estimates.each do |e| %>
+                        <% @estimates.each do |estimate| %>
                         <tr>
-                            <td class="m-2"><%= e.user.name %></td>
-                            <td><%= e.start_date %></td>
-                            <td><%= e.end_date %></td>
-                            <td><%= e.price %>€</td>
-                              <td><%= link_to "<i class='fa-solid fa-eye text-dark'>".html_safe, root_path %></td>
-                            <%# <td><button type="button" class="btn btn-success">Success</button> <button type="button" class="btn btn-danger">Danger</button></td> %>
+                            <td class="m-2"><%= estimate.user.name %></td>
+                            <td><%= estimate.start_date %></td>
+                            <td><%= estimate.end_date %></td>
+                            <td><%= estimate.price %>€</td>
+                            <td>
+                                <%= link_to mission_estimate_path(mission_id: estimate.mission_id, id: estimate.id) do %>
+                                    <%= content_tag :i, '' , class: 'fa-solid fa-eye text-dark' %>
+                                <% end %>
+                            </td>
                         </tr>
                         <% end %>
                     </tbody>
