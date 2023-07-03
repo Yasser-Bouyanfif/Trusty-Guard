@@ -38,12 +38,12 @@
                         <tr>
 
                             <td class="m-2">
-                               <%= e.user.name %>
+                               <%= estimate.user.name %>
                             </td>
-                            <td><%= e.number_of_agents %></td>
-                            <td><%= e.price %></td>
+                            <td><%= estimate.number_of_agents %></td>
+                            <td><%= estimate.price %></td>
                             <td>
-                               <%= link_to mission_estimate_path(e.mission, e) do %>
+                               <%= link_to mission_estimate_path(estimate.mission, estimate) do %>
                                     <%= content_tag :i, '' , class: 'fa-solid fa-eye text-dark' %>
                                 <% end %>
                             </td>

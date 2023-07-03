@@ -9,22 +9,18 @@
       <li class="list-group-item">Nombre d'agents : <%= @estimate.number_of_agents %></li>
       <li class="list-group-item">Commentaires : <%= @estimate.comment %></li>
       <li class="list-group-item">Prix : <%= @estimate.price %>€</li>
-     
+
     </ul>
     <div class="card-footer d-flex justify-content-between p-4">
-      <%# <button type="button" class="btn btn-success">Accepter</button>
-      <button type="button" class="btn btn-danger">Refuser</button> %>
-    </div>
-  </div>
-  <%= simple_form_for [@mission, @contract] do |f |%>
+      <%= simple_form_for [@mission, @contract] do |f |%>
     <% @agents.each do |agent| %>
         <label for=""><%= agent.first_name %></label>
-        <div class="form-input col-2">
           <input type="checkbox" name="agents[]" id="agent" value="<%= agent.id %>">
-        </div>
       <% end %>
 
       <%= hidden_field_tag(:estimate_id, @estimate.id) %>
            <%= f.button :submit %>
   <% end %>
+    </div>
+  </div>
 </div>
