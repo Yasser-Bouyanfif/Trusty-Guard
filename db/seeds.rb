@@ -6,9 +6,22 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+
+
+# 1. Create a user
+# 2. Create an agent
+# 3. Create a mission
+# 4. Create an estimate
+# 5. Create a team
+# 6. Create a team_mission
+# 7. Create an availability
+
+puts "Cleaning database..."
+
 Mission.destroy_all
 Agent.destroy_all
 User.destroy_all
+Estimate.destroy_all
 
 puts "Creating users..."
 
@@ -33,4 +46,13 @@ puts "Creating missions..."
 
 mission1 = Mission.create!(start_date: "01/01/1990", end_date: "02/01/1990", number_of_agents: "3", event_type: "festival", budget: "3000", comment: "besoin de 3 agents pour un festival", user: user2)
 
+mission2 = Mission.create!(start_date: "01/01/1990", end_date: "02/01/1990", number_of_agents: "2", event_type: "festival", budget: "2000", comment: "besoin de 2 agents pour un festival", user: user2)
+
+puts "Creating estimates..."
+
+estimate1 = Estimate.create!(start_date: "01/01/1990", end_date: "02/01/1990", number_of_agents: "3", comment: "besoin de 3 agents pour un festival", user: user1, mission: mission1, price: "3000", status: "pending")
+
+estimate2 = Estimate.create!(start_date: "01/01/1990", end_date: "02/01/1990", number_of_agents: "2", comment: "besoin de 2 agents pour un festival", user: user1, mission: mission2, price: "2000", status: "pending")
+
 puts "it's done"
+

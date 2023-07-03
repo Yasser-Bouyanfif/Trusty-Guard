@@ -27,22 +27,23 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Nom</th>
-                            <th>Début</th>
-                            <th>Fin</th>
-                            <th>Prix</th>
+                            <th>Prestataire</th>
+                            <th>Nombre agent</th>
+                            <th>Prix proposer</th>
                             <th>Voir</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% @estimates.each do |e| %>
                         <tr>
-                            <td class="m-2"><%= e.user.name %></td>
-                            <td><%= e.start_date %></td>
-                            <td><%= e.end_date %></td>
-                            <td><%= e.price %>€</td>
-                              <td><%= link_to "<i class='fa-solid fa-eye text-dark'>".html_safe, root_path %></td>
-                            <%# <td><button type="button" class="btn btn-success">Success</button> <button type="button" class="btn btn-danger">Danger</button></td> %>
+                            <td class="m-2">
+                               <%= e.user.name %>
+                            </td>
+                            <td><%= e.number_of_agents %></td>
+                            <td><%= e.price %></td>
+                            <td>
+                                <%= link_to 'Voir', mission_estimate_path(e.mission, e), class: "btn btn-primary" %>
+                            </td>
                         </tr>
                         <% end %>
                     </tbody>
