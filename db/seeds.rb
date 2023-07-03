@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
+
 # 1. Create a user
 # 2. Create an agent
 # 3. Create a mission
@@ -54,3 +55,4 @@ estimate1 = Estimate.create!(start_date: "01/01/1990", end_date: "02/01/1990", n
 estimate2 = Estimate.create!(start_date: "01/01/1990", end_date: "02/01/1990", number_of_agents: "2", comment: "besoin de 2 agents pour un festival", user: user1, mission: mission2, price: "2000", status: "pending")
 
 puts "it's done"
+
