@@ -18,6 +18,10 @@
 
 puts "Cleaning database..."
 
+Contract.destroy_all
+Estimate.destroy_all
+Availability.destroy_all
+Mission.destroy_all
 Agent.destroy_all
 User.destroy_all
 
