@@ -17,7 +17,7 @@
 
   <br>
 
-  <table  class="table table-dark table-hover text-center" data-search-bar-target="list">
+  <table  class="table table-muted table-hover text-center" data-search-bar-target="list">
     <thead class="table-dark">
       <tr>
         <th>Nom</th>
@@ -31,13 +31,12 @@
         <tr>
           <td><%= agent.last_name %></td>
           <td><%= agent.first_name %></td>
-          <td>
-            <%= link_to 'Voir', agent_path(agent) %>
-            <%= link_to 'Editer', edit_agent_path(agent) %>
-            <%= link_to 'Supprimer', agent_path(agent), data: { turbo_method: :delete } %>
+          <td class="d-flex justify-content-center gap-4">
+            <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_agent_path(agent) %>
+            <%= link_to '<i class="fa-sharp fa-solid fa-trash"></i>'.html_safe, agent_path(agent), data: { turbo_method: :delete } %>
           </td>
           <td>
-            <%= link_to 'Voir', agent_path(agent) %>
+            <%= link_to '<i class="fa-solid fa-eye"></i>'.html_safe, agent_path(agent) %>
           </td>
         </tr>
       <% end %>

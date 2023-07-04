@@ -5,7 +5,7 @@ class ContractsController < ApplicationController
     @agents = params[:agents].each { |agent| agent.to_i }
     @agents.each do |agent_id|
       Contract.create!(agent_id: agent_id, mission: @mission)
-      Availability.create!(agent_id: agent_id, start_date: @estimate.start_date, end_date: @estimate.end_date)
+      Availability.create!(agent_id: agent_id, start_date: @mission.start_date, end_date: @mission.end_date)
     end
     @mission.disabled = 1
     @mission.save!

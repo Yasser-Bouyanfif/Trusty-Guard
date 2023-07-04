@@ -1,23 +1,21 @@
 <!-- CONTENT -->
-<section id="content">
+
+<div class="container">
+    <section id="content">
     <!-- MAIN -->
     <main>
         <div class="head-title">
-            <div class="left">
+            <div class="d-flex w-100 justify-content-between p-3">
                 <h1>
                     <%= @user.name %>
                 </h1>
-                <ul class="breadcrumb">
-                    <li>
-                        <%= link_to 'Mes Agents' , agents_path, class: "btn-download text-white active" %>
-                    </li>
-                    <li><i class='bx bx-chevron-right'></i></li>
-                </ul>
+                <li>
+                  <%= link_to 'Mes Agents' , agents_path, class: "btn btn-dark text-white active rounded-2 " %>
+                </li>
             </div>
         </div>
-
-
-        <div class="table-data">
+        <hr>
+        <div class="table-data mt-5 ">
             <div class="order shadow-lg">
                 <div class="head">
                     <h3>Offres récentes</h3>
@@ -55,7 +53,7 @@
                                 </td>
                                 <td>
                                     <%= link_to mission_path(mission) do %>
-                                        <%= content_tag :i, '' , class: 'fa-solid fa-eye text-dark' %>    
+                                        <%= content_tag :i, '' , class: 'fa-solid fa-eye text-dark' %>
                                     <% end %>
                                 </td>
                             </tr>
@@ -86,3 +84,5 @@
     </main>
     <!-- MAIN -->
 </section>
+
+</div>
