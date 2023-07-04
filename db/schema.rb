@@ -68,7 +68,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_132252) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "disabled", default: 0
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_missions_on_user_id"
+  end
+
+  create_table "teams_missions", force: :cascade do |t|
+    t.bigint "agent_id", null: false
+    t.bigint "mission_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agent_id"], name: "index_teams_missions_on_agent_id"
+    t.index ["mission_id"], name: "index_teams_missions_on_mission_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,4 +107,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_132252) do
   add_foreign_key "estimates", "missions"
   add_foreign_key "estimates", "users"
   add_foreign_key "missions", "users"
+  add_foreign_key "teams_missions", "agents"
+  add_foreign_key "teams_missions", "missions"
 end
