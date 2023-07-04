@@ -18,10 +18,8 @@
 
 puts "Cleaning database..."
 
-Mission.destroy_all
 Agent.destroy_all
 User.destroy_all
-Estimate.destroy_all
 
 puts "Creating users..."
 
