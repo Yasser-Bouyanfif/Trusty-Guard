@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_04_130224) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_04_132252) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,16 +47,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_130224) do
   end
 
   create_table "estimates", force: :cascade do |t|
-    t.date "start_date"
-    t.date "end_date"
-    t.integer "number_of_agents"
-    t.string "comment"
     t.bigint "user_id", null: false
     t.bigint "mission_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price"
     t.integer "disabled", default: 0
+    t.text "comment"
     t.index ["mission_id"], name: "index_estimates_on_mission_id"
     t.index ["user_id"], name: "index_estimates_on_user_id"
   end

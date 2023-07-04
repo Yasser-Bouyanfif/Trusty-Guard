@@ -34,14 +34,14 @@ puts "Creating agents..."
 
 agent1 = Agent.create!(first_name: "John", last_name: "Doe", birth_date: "01/01/1990", email: "johndoe@gmail.com", phone_number: "01 23 45 67 89", address: "1 rue de la paix, Paris", iban: "FR76 3000 1007 1600 0000 0000 123", user: user1)
 
-agent2 = Agent.create!(first_name: "Jane", last_name: "Doe", birth_date: "01/01/1990", email: "janedoe@gmail.com", phone_number: "01 23 45 67 89", address: "1 rue de la paix, Paris", iban: "FR76 3000 1007 1600 0000 0000 123", user: user1)
+agent2 = Agent.create!(first_name: "Jane", last_name: "Butcher", birth_date: "01/01/1990", email: "janedoe@gmail.com", phone_number: "01 23 45 67 89", address: "1 rue de la paix, Paris", iban: "FR76 3000 1007 1600 0000 0000 123", user: user1)
 
-agent3 = Agent.create!(first_name: "Jack", last_name: "Doe", birth_date: "01/01/1990", email: "jackdoe@gmail.com", phone_number: "01 23 45 67 89", address: "1 rue de la paix, Paris", iban: "FR76 3000 1007 1600 0000 0000 123", user: user1)
+agent3 = Agent.create!(first_name: "Jack", last_name: "Park", birth_date: "01/01/1990", email: "jackdoe@gmail.com", phone_number: "01 23 45 67 89", address: "1 rue de la paix, Paris", iban: "FR76 3000 1007 1600 0000 0000 123", user: user1)
 
-agent4 = Agent.create!(first_name: "Jill", last_name: "Doe", birth_date: "01/01/1990", email: "jilldoe@gmail.com", phone_number: "01 23 45 67 89", address: "1 rue de la paix, Paris", iban: "FR76 3000 1007 1600 0000 0000 123", user: user1)
+agent4 = Agent.create!(first_name: "Jill", last_name: "Vador", birth_date: "01/01/1990", email: "jilldoe@gmail.com", phone_number: "01 23 45 67 89", address: "1 rue de la paix, Paris", iban: "FR76 3000 1007 1600 0000 0000 123", user: user1)
 
-agent5 = Agent.create!(first_name: "James", last_name: "Doe", birth_date: "01/01/1990", email: "jamesdoe@gmail.com", phone_number: "01 23 45 67 89", address: "1 rue de la paix, Paris", iban: "FR76 3000 1007 1600 0000 0000 123", user: user1)
+agent5 = Agent.create!(first_name: "James", last_name: "Rodriguez", birth_date: "01/01/1990", email: "jamesdoe@gmail.com", phone_number: "01 23 45 67 89", address: "1 rue de la paix, Paris", iban: "FR76 3000 1007 1600 0000 0000 123", user: user1)
 
-agent6 = Agent.create!(first_name: "Jenny", last_name: "Doe", birth_date: "01/01/1990", email: "jennydoe@gmail.com", phone_number: "01 23 45 67 89", address: "1 rue de la paix, Paris", iban: "FR76 3000 1007 1600 0000 0000 123", user: user1)
+agent6 = Agent.create!(first_name: "Jenny", last_name: "Feur", birth_date: "01/01/1990", email: "jennydoe@gmail.com", phone_number: "01 23 45 67 89", address: "1 rue de la paix, Paris", iban: "FR76 3000 1007 1600 0000 0000 123", user: user1)
 
 puts "it's done"

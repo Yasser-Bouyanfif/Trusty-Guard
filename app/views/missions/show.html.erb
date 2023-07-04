@@ -1,10 +1,35 @@
 
+<div class="d-flex align-items-center justify-content-center" style="height: 80vh;">
+  <div class="card border-light mb-3" style="max-width: 35rem;">
+  <div class="card-body">
+    <h5 class="card-title">Appel d'Offre - Recherche d'Agence de Sécurité</h5>
+    <hr>
+    <p class="card-text">
+      Nous organisons un festival du <%= @mission.start_date %> au <%= @mission.end_date %> et sommes à la recherche d'une agence de sécurité expérimentée. Voici les détails de notre recherche :
+      <ul>
+        <li>Dates de l'événement : <%= @mission.start_date %> au <%= @mission.end_date %></li>
+        <li>Nombre d'agents de sécurité requis : <%= @mission.number_of_agents %></li>
+        <li>Type d'événement : <%= @mission.event_type %></li>
+        <li>Budget alloué : <%= @mission.budget %>€</li>
+      </ul>
+        Nous vous invitons à soumettre votre offre détaillée avant la date limite. N'hésitez pas à inclure des commentaires ou des suggestions pour améliorer la sécurité de notre festival.
+    </p>
+    Cordialement,
+    [ <%= @mission.user.name %> ]
+    <%= button_to 'Proposer un devis', new_mission_estimate_path(@mission), class: 'btn btn-info mt-3' %>
+  </div>
+</div>
+</div>
+
+
                 <div class="d-flex flex-column justify-content-center">
                   <p>Lieu de la mission : <%= @mission.address %></p>
                   <div style="width: 70%; height: 400px;"
                   data-controller="map"
                   data-map-marker-value="<%= @marker.to_json %>"
-                  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>    </div>
+                  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+                  </div>
+                  </div>
                   </div>
                 </div>
             </div>
