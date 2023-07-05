@@ -8,12 +8,12 @@ div{
   display: block;
 }
 
-.banner h1,h3 {
+.banner #h1, #h3 {
   color: white;
   text-shadow: black 0px 0px 10px;
 }
 
-h2{
+#h2{
   color: rgb(16, 102, 109);
   text-shadow: grey 3px 3px 12px;
 }
@@ -56,14 +56,14 @@ h5 {
   align-items: center;
 }
 
-.cards {
+.cards-landing {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.card {
+.card-landing {
   width: 400px;
   border-radius: 3px;
   box-shadow: 0 0 5px rgb(230, 230, 230);
@@ -73,7 +73,7 @@ h5 {
   /* background-color: red; */
 }
 
-.card img {
+.card-landing img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
