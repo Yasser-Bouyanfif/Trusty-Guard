@@ -13,66 +13,67 @@
 
   <%= render "shared/dashboard_client" %>
   <% end %>
-<% end %>
+  <% else %>
+    <!DOCTYPE html>
+    <html>
 
-<!DOCTYPE html>
-<html>
+    <head>
+      <meta charset="UTF-8">
+      <title>My landing page</title>
+      <link rel="shortcut icon" href="data:image/x-icon;" type="image/x-icon">
+      <!-- We need this line below for responsiveness! -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="css/style.css">
+    </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>My landing page</title>
-  <link rel="shortcut icon" href="data:image/x-icon;" type="image/x-icon">
-  <!-- We need this line below for responsiveness! -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+    <body>
 
-<body>
-
-  <!-- code a Hero / Banner section -->
-  <div class="banner" style="background-image: url(https://f.maformation.fr/edito/sites/3/2020/05/agent-securite.jpg);">
-    <div class="container">
-      <h1>TRUSTY GUARD</h1>
-      <br>
-      <h3>Identifiez les agents les mieux adaptés à vos besoins.</h3>
-    </div>
-  </div>
-
-  <!-- code a "How it works" section -->
-  <div class="container2">
-
-   <div class=" d-flex flex-column align-items-center justify-content-center mt-4">
-        <h2>Bienvenue chez Trusty Guard </h2>
-        <div class="d-flex flex-row">
-          <h5>Votre partenaire de confiance pour tous vos besoins en matière de sécurité. Chez TRUSTY GUARD, nous comprenons l'importance cruciale de la sécurité dans tous les aspects de la vie. Que ce soit pour votre entreprise, votre événement spécial ou votre propriété, nous sommes là pour vous offrir une tranquillité d'esprit totale grâce à nos services de sécurité hautement professionnels et fiables.</h5>
-          <img id="icon" src="https://static.vecteezy.com/ti/vecteur-libre/p3/4434587-agent-de-securite-concepts-vectoriel.jpg" alt="">
+      <!-- code a Hero / Banner section -->
+      <div class="banner" style="background-image: url(https://f.maformation.fr/edito/sites/3/2020/05/agent-securite.jpg);">
+        <div class="container">
+          <h1>TRUSTY GUARD</h1>
+          <br>
+          <h3>Identifiez les agents les mieux adaptés à vos besoins.</h3>
         </div>
-    </div>
-
-    <h4 class="text-center mt-5">Comment ça fonctionne ?</h4>
-
-    <br>
-
-    <div class="cards mt-4 mb-3">
-
-      <div class="card shadow">
-        <img src="https://img.uxwing.com/wp-content/themes/uxwing/download/crime-security-military-law/security-guard-icon.svg" alt="">
-        <br>
-        <h4>Learn to fail</h4>
-        <p>“Am I making something worth while?" Do not regret what you have done. Learn from defeat and acquiere expreience. From every failure you will learn and reborn as a new man.</p>
       </div>
 
-      <div class="card shadow">
-        <img class="" src="https://static.vecteezy.com/system/resources/previews/000/350/842/original/contract-vector-icon.jpg" alt="">
+      <!-- code a "How it works" section -->
+      <div class="container2">
+
+      <div class=" d-flex flex-column align-items-center justify-content-center mt-4">
+            <h2>Bienvenue chez Trusty Guard </h2>
+            <div class="d-flex flex-row">
+              <h5>Votre partenaire de confiance pour tous vos besoins en matière de sécurité. Chez TRUSTY GUARD, nous comprenons l'importance cruciale de la sécurité dans tous les aspects de la vie. Que ce soit pour votre entreprise, votre événement spécial ou votre propriété, nous sommes là pour vous offrir une tranquillité d'esprit totale grâce à nos services de sécurité hautement professionnels et fiables.</h5>
+              <img id="icon" src="https://static.vecteezy.com/ti/vecteur-libre/p3/4434587-agent-de-securite-concepts-vectoriel.jpg" alt="">
+            </div>
+        </div>
+
+        <h4 class="text-center mt-5">Comment ça fonctionne ?</h4>
+
         <br>
-        <h4>Think only about your art</h4>
-        <p>Focus on you art. Do not doubt. Finally with great work and dedication you will be able to bring life to you goals.</p>
+
+        <div class="cards mt-4 mb-3">
+
+          <div class="card shadow">
+            <img src="https://img.uxwing.com/wp-content/themes/uxwing/download/crime-security-military-law/security-guard-icon.svg" alt="">
+            <br>
+            <h4>Learn to fail</h4>
+            <p>“Am I making something worth while?" Do not regret what you have done. Learn from defeat and acquiere expreience. From every failure you will learn and reborn as a new man.</p>
+          </div>
+
+          <div class="card shadow">
+            <img class="" src="https://static.vecteezy.com/system/resources/previews/000/350/842/original/contract-vector-icon.jpg" alt="">
+            <br>
+            <h4>Think only about your art</h4>
+            <p>Focus on you art. Do not doubt. Finally with great work and dedication you will be able to bring life to you goals.</p>
+          </div>
+
+        </div>
+
       </div>
 
-    </div>
+    </body>
 
-  </div>
+    </html>
 
-</body>
-
-</html>
+<% end %>
