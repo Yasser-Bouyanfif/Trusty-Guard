@@ -13,7 +13,7 @@ class MissionsController < ApplicationController
 
   def show
     @mission = Mission.find(params[:id])
-    @marker = [{ lat: @mission.latitude, lng: @mission.longitude }]
+    @marker = { lat: @mission.latitude, lng: @mission.longitude }
   end
 
   private

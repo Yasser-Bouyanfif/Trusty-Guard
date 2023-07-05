@@ -9,4 +9,8 @@ class PagesController < ApplicationController
       @estimates = current_user.estimates
     end
   end
+
+  def user_profile
+    
+  end
 end
