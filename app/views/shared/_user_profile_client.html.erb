@@ -1,0 +1,29 @@
+<h1><%= cl_image_tag current_user.photo.key, crop: :fill %> <%= current_user.name %></h1>
+<% @missions.each do |mission| %>
+<%= mission.id %>
+<%= mission.start_date %>
+<%= mission.end_date %>
+<%= mission.event_type %>
+<%= mission.number_of_agents %>
+<%= mission.address %> <br> <br>
+<% end %>
+<hr><br>
+<% @estimates.each do |estimate| %>
+<%= estimate.id %>
+<%= estimate.user.name %>
+<%= estimate.comment %><br> <br>
+<% end %>
+<hr><br>
+<% @contracts.each do |contract| %>
+Mission n°: <%= contract.mission.id %>
+Agence de sécurité: <%= contract.agent.user.name %>
+<% availability = contract.agent.availabilities.flat_map { |a| a  } %>
+<%  agent_availability = Availability.where(id: availability.pluck(:id))  %>
+    Nom de l'agent: <%= contract.agent.first_name %>
+    Prénom de l'agent: <%= contract.agent.last_name %>
+<% agent_availability.each do |a| %>
+    Debut du contrat: <%= a.start_date.strftime("%d %b %Y") %>
+    Fin du contrat: <%= a.end_date.strftime("%d %b %Y") %> <br> <br>
+<% end %>
+<% end %>
+<hr><br>
