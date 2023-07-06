@@ -42,4 +42,5 @@ agent5 = Agent.create!(first_name: "James", last_name: "Doe", birth_date: "01/01
 
 agent6 = Agent.create!(first_name: "Jenny", last_name: "Doe", birth_date: "01/01/1990", email: "jennydoe@gmail.com", phone_number: "01 23 45 67 89", address: "1 rue de la paix, Paris", iban: "FR76 3000 1007 1600 0000 0000 123", user: user1)
 
+
 puts "it's done"

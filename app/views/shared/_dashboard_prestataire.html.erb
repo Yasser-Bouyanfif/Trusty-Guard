@@ -55,8 +55,8 @@
                                 </td>
                                 <td>
                                     <%= link_to mission_path(mission) do %>
-                                        <%= content_tag :i, '' , class: 'fa-solid fa-eye text-dark' %>    
-                                    <% end %>
+                                        <%= content_tag :i, '' , class: 'fa-solid fa-eye text-dark' %>
+                                            <% end %>
                                 </td>
                             </tr>
                             <% end %>
@@ -68,16 +68,12 @@
                     <h3>Boite de réception</h3>
                 </div>
                 <ul class="todo-list">
-                    <li class="completed">
-                        <small>
-                            <p>Nom de l'entreprise</p>
-                        </small>
-                        <p>message</p>
-                    </li>
                     <li class="not-completed">
-                        <small>
-                            <p>Nom de l'entreprise</p>
-                        </small>
+                        <% @chatrooms.each do |chatroom| %>
+                            <small>
+                                <%= link_to "envoyer un message", chatroom_path(chatroom) %>
+                            </small>
+                        <% end %>
                         <p>message</p>
                     </li>
                 </ul>
