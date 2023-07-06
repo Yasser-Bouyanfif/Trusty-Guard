@@ -10,6 +10,7 @@ class PagesController < ApplicationController
 
   def market
     @missions = Mission.where(disabled: 0).order(created_at: :desc)
+    @estimates = current_user.estimates_for_role    
     if current_user
       @estimates = current_user.estimates.where(disabled: 0).order(created_at: :desc)
     end
