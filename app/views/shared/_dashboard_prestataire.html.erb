@@ -2,11 +2,11 @@
 <section id="content">
   <!-- MAIN -->
   <main>
-
     <div class="head-title">
       <div class="d-flex w-100 justify-content-between p-3">
         <h1>
-          <%= @user.name %>
+          <%= cl_image_tag current_user.photo.key, crop: :fill %>
+            <%= current_user.name %>
         </h1>
         <li>
           <%= link_to 'Mes Agents' , agents_path, class: "btn btn-secondary text-white rounded-2 " %>
@@ -45,7 +45,7 @@
                   </p>
                 </td>
                 <td>
-                   <%= mission.start_date.strftime('%d/%m/%Y') %>
+                  <%= mission.start_date.strftime('%d/%m/%Y') %>
                 </td>
                 <td>
                   <%= mission.end_date.strftime('%d/%m/%Y') %>
@@ -64,19 +64,29 @@
         <div class="head">
           <h3>Boite de réception</h3>
         </div>
+
         <ul class="todo-list">
-          <li class="completed">
-            <small>
-              <p>Nom de l'entreprise</p>
-            </small>
-            <p>message</p>
-          </li>
-          <li class="not-completed">
-            <small>
-              <p>Nom de l'entreprise</p>
-            </small>
-            <p>message</p>
-          </li>
+          <% @estimates.each do |estimate| %>
+            <% last_message=estimate.chatroom.messages.last %>
+              <% if estimate.user %>
+                <%= link_to chatroom_path(estimate.chatroom) do %>
+                  <li class="not-completed my-3 text-dark">
+                    <small>
+                      <p><strong>
+                          <%= estimate.user.name %>
+                        </strong></p>
+                    </small>
+                    <% if last_message && last_message.user !=current_user %>
+                      <p>
+                        <%= last_message.content %>
+                      </p>
+                      <% else %>
+                        <p>Pas de nouveau message</p>
+                        <% end %>
+                  </li>
+                  <% end %>
+                    <% end %>
+                      <% end %>
         </ul>
       </div>
     </div>

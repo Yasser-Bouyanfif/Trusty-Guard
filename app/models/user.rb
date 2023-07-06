@@ -5,9 +5,19 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   TYPE = ["Security Company", "Customer Company"].freeze
   validates :category, inclusion: { in: TYPE }
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :missions
   has_many :agents
   has_many :estimates, through: :missions
+  has_many :contracts, through: :missions
+  has_many :chatrooms, through: :estimates
   has_one_attached :photo
+
+  def estimates_for_role
+    if self.category == "Security Company"
+      self.estimates
+    else
+      self.missions.map { |mission| mission.estimates }.flatten
+    end
+  end
 end
