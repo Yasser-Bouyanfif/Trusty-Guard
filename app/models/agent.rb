@@ -3,4 +3,5 @@ class Agent < ApplicationRecord
   has_many :availabilities
   has_many :contracts
   has_many :missions, through: :contracts
+  has_many_attached :photos
 end

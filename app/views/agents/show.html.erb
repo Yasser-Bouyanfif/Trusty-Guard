@@ -7,9 +7,11 @@
         <div class="card shadow-lg">
           <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
             <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-              <img src="https://secoprotec.com/wp-content/uploads/2021/01/APS.jpg"
+              <!-- <img src="https://secoprotec.com/wp-content/uploads/2021/01/APS.jpg"
                 alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                style="width: 150px; z-index: 1">
+                style="width: 150px; z-index: 1"> -->
+                <%= cl_image_tag @agent.photos.first.key, height: 300, width: 400, crop: :fill %>
+
               <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
                 style="z-index: 1;">
                 <%= link_to 'Editer', edit_agent_path(@agent) %>
@@ -47,6 +49,16 @@
                 <p class="font-italic mb-1">Numéro de teléphone : <%= @agent.phone_number %></p>
                 <p class="font-italic mb-1">Adresse : <%= @agent.address %></p>
                 <p class="font-italic mb-1">IBAN : <%= @agent.iban %></p>
+              </div>
+              <div>
+
+
+                <p>Document :</p>
+                <% @agent.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+                <% end %>
+
+
               </div>
             </div>
             <div>

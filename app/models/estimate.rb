@@ -7,4 +7,6 @@ class Estimate < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :number_of_agents, presence: true
+  has_many :contracts, through: :mission
+  has_many :agents, through: :contracts
 end

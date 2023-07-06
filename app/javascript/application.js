@@ -11,4 +11,3 @@ import "./controllers"
 // application.load(definitionsFromContext(context));
 // application.register('search-bar', SearchBarController);
 
-

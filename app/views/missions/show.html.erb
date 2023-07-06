@@ -1,55 +1,42 @@
-<div class="container mt-5">
-    <div class="row">
-        <div class="d-flex col-10">
-            <div class="d-flex flex-column">
-                <h1 class="">
-                    <%= @mission.user.name %>
-                </h1>
-                <div class="mt-3">
-                    <% if current_user.category=="Security Company" %>
-                        <%= link_to "Faire un devis" , new_mission_estimate_path(@mission),
-                            class: "btn btn-outline-primary rounded" %>
-                            <% end %>
-                </div>
-                <div class="border rounded border-dark p-3 mt-4">
-                    <div class="row mt-3">
-                        <div class="col-4">
-                            <p>
-                                Type de mission : <%= @mission.event_type %>
-                            </p>
-                        </div>
-                        <div class="col-4">
-                            <p>
-                                Debut : <%= @mission.start_date %>
-                            </p>
-                        </div>
-                        <div class="col-4">
-                            <p>
-                                Fin : <%= @mission.end_date %>
-                            </p>
-                        </div>
-                        <div class="col-4">
-                            <p>
-                                Agents : <%= @mission.number_of_agents %>
-                            </p>
-                        </div>
-                        <div class="col-4">
-                            <p>
-                                Budget : <%= @mission.budget %>
-                            </p>
-                        </div>
-                        <div class="col-11">
-                            <hr class="my-5">
-                        </div>
-                        <div>
-                            <h5 style="font-weight: bold;">Commentaire</h5>
-                            <p>
-                                <%= @mission.comment %>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="container w-100 d-flex justify-content-evenly mt-4">
+      <div class="card border-light" style="max-width: 35rem;">
+        <div class="card-body">
+          <h5 class="card-title">Appel d'Offre - Recherche d'Agence de Sécurité</h5>
+          <hr>
+          <p class="card-text">
+            Nous organisons un festival du <%= @mission.start_date %> au <%= @mission.end_date %> et sommes à la
+                recherche
+                d'une agence de sécurité expérimentée. Voici les détails de notre recherche :
+                <ul>
+                  <li>Dates de l'événement : <%= @mission.start_date %> au <%= @mission.end_date %>
+                  </li>
+                  <li>Adresse de la mission : <%= @mission.address %>
+                  </li>
+                  <li>Nombre d'agents de sécurité requis : <%= @mission.number_of_agents %>
+                  </li>
+                  <li>Type d'événement : <%= @mission.event_type %>
+                  </li>
+                  <li>Budget alloué : <%= @mission.budget %>€</li>
+                </ul>
+                Nous vous invitons à soumettre votre offre détaillée avant la date limite. N'hésitez pas à inclure des
+                commentaires ou des suggestions pour améliorer la sécurité de notre festival.
+          </p>
+          <div class="d-flex justify-content-between p-3">
+            <%= @mission.user.name %>
+              <%= link_to 'Proposer un devis' , new_mission_estimate_path(@mission), class: 'btn btn-info ' %>
+          </div>
         </div>
+      </div>
+
+
+
+    <div class="">
+      <div style="width: 35rem; height: 100%;" data-controller="map" data-map-marker-value="<%= @marker.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        <% @mission.address %>
+      </div>
     </div>
+  </div>
+</div>
+</div>
 </div>

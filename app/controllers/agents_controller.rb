@@ -17,7 +17,7 @@ class AgentsController < ApplicationController
   def show
     @agent = Agent.find(params[:id])
   end
-  
+
   def new
     @agent = Agent.new
   end
@@ -66,6 +66,6 @@ class AgentsController < ApplicationController
   private
 
   def agent_params
-    params.require(:agent).permit(:first_name, :last_name, :birth_date, :email, :phone_number, :address, :iban)
+    params.require(:agent).permit(:first_name, :last_name, :birth_date, :email, :phone_number, :address, :iban, photos: [])
   end
 end

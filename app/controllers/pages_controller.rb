@@ -14,4 +14,8 @@ class PagesController < ApplicationController
       @chatrooms << estimate.chatroom
     end
   end
+
+  def user_profile
+    
+  end
 end
