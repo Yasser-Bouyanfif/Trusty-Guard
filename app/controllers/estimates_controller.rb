@@ -10,6 +10,7 @@ class EstimatesController < ApplicationController
     @estimate = Estimate.new(estimate_params)
     @estimate.user = current_user
     @estimate.mission = @mission
+    @estimate.build_chatroom # Create a chatroom for the estimate
     if @estimate.save
       redirect_to root_path
     else

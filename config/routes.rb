@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     resources :contracts, only: :create
     resources :estimates, only: [:new, :create, :show]
   end
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
+
   resources :agents
   post '/agents/search', to: 'agents#search'
+  
 end
