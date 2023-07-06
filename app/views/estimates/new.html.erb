@@ -5,8 +5,8 @@
       <div class="bg-white rounded p-3 shadow">
         <h3>Création d'un devis</h3>
         <%= simple_form_for [@mission, @estimate] do |f| %>
-          <%= f.input :comment, placeholder: 'Laissez un commentaire' %>
-          <%= f.submit class: 'btn btn-secondary' %>
+          <%= f.input :comment, placeholder: 'Laissez un commentaire', :label => "Commentaire" %>
+          <%= f.submit 'Envoyer mon devis', class: 'btn btn-secondary' %>
         <% end%>
       </div>
     </div>

@@ -63,4 +63,3 @@ Chatroom.create!(estimate: estimate3)
 
 estimate4 = Estimate.create!(comment: "Comment 4", mission: mission4, user: user1)
 Chatroom.create!(estimate: estimate4)
-

@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_07_04_171257) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,7 +110,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_04_171257) do
     t.integer "number_of_agents"
     t.string "event_type"
     t.integer "budget"
-    t.string "comment"
+    t.text "comment"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
