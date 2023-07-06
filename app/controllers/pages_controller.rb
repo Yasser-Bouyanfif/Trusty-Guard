@@ -3,19 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @missions = Mission.all
-    @user = current_user
-    
-    if current_user
-      @estimates = current_user.estimates
-    end
-    
-    @chatrooms = []
-    @estimates.each do |estimate|
-      @chatrooms << estimate.chatroom
-    end
-  end
-
-  def user_profile
-    
+    @estimates = current_user.estimates_for_role
   end
 end

@@ -5,5 +5,6 @@ class Mission < ApplicationRecord
   has_many :contracts
   has_many :agents, through: :contracts
   has_many :estimates
+  has_many :chatrooms, through: :estimates
   has_many :contracts
 end

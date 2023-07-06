@@ -5,7 +5,7 @@
         <div class="head-title">
             <div class="d-flex w-100 justify-content-between p-3">
                 <h1>
-                    <%= @user.name %>
+                    <%= current_user.name %>
                 </h1>
                 <li>
                   <%= link_to 'Mes Agents' , agents_path, class: "btn btn-dark text-white active rounded-2 " %>
@@ -55,7 +55,7 @@
                                     <% end %>
                                 </td>
                             </tr>
-                            <% end %>
+                        <% end %>
                     </tbody>
                 </table>
             </div>
@@ -64,14 +64,23 @@
                     <h3>Boite de réception</h3>
                 </div>
                 <ul class="todo-list">
-                    <li class="not-completed">
-                        <% @chatrooms.each do |chatroom| %>
-                            <small>
-                                <%= link_to "envoyer un message", chatroom_path(chatroom) %>
-                            </small>
+                     <% @estimates.each do |estimate| %>
+                        <% last_message = estimate.chatroom.messages.last %>
+                            <% if estimate.user %>
+                            <%= link_to chatroom_path(estimate.chatroom) do %>
+                                <li class="not-completed my-3 text-dark">
+                                <small>
+                                    <p><strong><%= estimate.user.name %></strong></p>
+                                </small>
+                                <% if last_message && last_message.user != current_user %>
+                                    <p><%= last_message.content %></p>
+                                <% else %>
+                                    <p>Pas de nouveau message</p>
+                                <% end %>
+                                </li>
+                            <% end %>
                         <% end %>
-                        <p>message</p>
-                    </li>
+                    <% end %>
                 </ul>
             </div>
         </div>
