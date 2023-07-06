@@ -1,39 +1,47 @@
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs p-3">
    <%= f.input :category,
                 required: true,
+                :label => "Selectionnez une catégorie",
                 input_html: { autocomplete: "category" },
                 collection: User::TYPE
                 %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
+                :label => "Entrez une adresse e-mail",
                 input_html: { autocomplete: "email" }%>
     <%= f.input :password,
                 required: true,
+                :label => "Entrez un mot de passe",
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: true,
+                :label => "Entrez le mot de passe à nouveau",
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :name,
                 required: true,
+                :label => "Nom de l'entreprise",
                 input_html: { autocomplete: "name" } %>
     <%= f.input :address,
                 required: true,
+                :label => "Adresse de domicilation",
                 input_html: { autocomplete: "address" } %>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :photo, as: :file, :label => "Importez un logo" %>
     <%= f.input :phone_number,
                 required: true,
+                :label => "Numéro de téléphone",
                 input_html: { autocomplete: "phone_number" } %>
     <%= f.input :siret,
                 required: true,
+                :label => "Numéro de siret",
                 input_html: { autocomplete: "siret" } %>
   </div>
 
-  <div class="form-actions">
+  <div class="form-actions p-3">
     <%= f.button :submit, "S'inscrire", class: "btn btn-secondary" %>
   </div>
 <% end %>

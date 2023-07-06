@@ -1,0 +1,10 @@
+<% if user_signed_in? %>
+  <% if current_user.category=="Security Company" %>
+    <%= render "shared/dashboard_prestataire" %>
+  <% end %>
+
+  <% if current_user.category=="Customer Company" %>
+    <%= render "shared/dashboard_client" %>
+  <% end %>
+  <% else %>
+<% end %>
