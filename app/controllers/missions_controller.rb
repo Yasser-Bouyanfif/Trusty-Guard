@@ -8,7 +8,7 @@ class MissionsController < ApplicationController
     @mission = Mission.new(mission_params)
     @mission.user = current_user
     @mission.save!
-    redirect_to root_path
+    redirect_to market_path
   end
 
   def show

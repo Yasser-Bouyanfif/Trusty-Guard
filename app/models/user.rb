@@ -9,5 +9,6 @@ class User < ApplicationRecord
   has_many :missions
   has_many :agents
   has_many :estimates, through: :missions
+  has_many :contracts, through: :missions
   has_one_attached :photo
 end

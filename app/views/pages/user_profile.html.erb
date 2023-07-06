@@ -1,1 +1,10 @@
-<h1>PAGE PROFILE PAPI</h1>
+<% if user_signed_in? %>
+  <% if current_user.category=="Security Company" %>
+    <%= render "shared/user_profile_prestataire" %>
+  <% end %>
+
+  <% if current_user.category=="Customer Company" %>
+    <%= render "shared/user_profile_client" %>
+  <% end %>
+  <% else %>
+<% end %>
