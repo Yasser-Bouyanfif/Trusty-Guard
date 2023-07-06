@@ -1,4 +1,88 @@
 <!-- CONTENT -->
+    <section id="content">
+    <!-- MAIN -->
+    <main>
+        <div class="head-title">
+            <div class="d-flex w-100 justify-content-between p-3">
+                <h1>
+                    <%= current_user.name %>
+                </h1>
+                <li>
+                  <%= link_to 'Mes Agents' , agents_path, class: "btn btn-dark text-white active rounded-2 " %>
+                </li>
+            </div>
+        </div>
+        <hr>
+        <div class="table-data mt-5 ">
+            <div class="order shadow-lg">
+                <div class="head">
+                    <h3>Offres récentes</h3>
+                    <a href="#" class="btn-download">
+                        <i class='bx bxs-cloud-download'></i>
+                        <span class="text">Voir tout</span>
+                    </a>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Offres</th>
+                            <th>Début</th>
+                            <th>Fin</th>
+                            <th>Voir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @missions.each do |mission| %>
+                            <tr>
+                                <td class="m-2">
+                                    <%= mission.user.name %>
+                                </td>
+                                <td>
+                                    <p class="m-2">
+                                        <%= mission.event_type %>
+                                    </p>
+                                </td>
+                                <td>
+                                    <%= mission.start_date %>
+                                </td>
+                                <td>
+                                    <%= mission.end_date %>
+                                </td>
+                                <td>
+                                    <%= link_to mission_path(mission) do %>
+                                        <%= content_tag :i, '' , class: 'fa-solid fa-eye text-dark' %>
+                                    <% end %>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="todo shadow-lg">
+                <div class="head">
+                    <h3>Boite de réception</h3>
+                </div>
+                <ul class="todo-list">
+                     <% @estimates.each do |estimate| %>
+                        <% last_message = estimate.chatroom.messages.last %>
+                            <% if estimate.user %>
+                            <%= link_to chatroom_path(estimate.chatroom) do %>
+                                <li class="not-completed my-3 text-dark">
+                                <small>
+                                    <p><strong><%= estimate.user.name %></strong></p>
+                                </small>
+                                <% if last_message && last_message.user != current_user %>
+                                    <p><%= last_message.content %></p>
+                                <% else %>
+                                    <p>Pas de nouveau message</p>
+                                <% end %>
+                                </li>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </ul>
+            </div>
 <section id="content">
   <!-- MAIN -->
   <main>
@@ -6,7 +90,7 @@
     <div class="head-title">
       <div class="d-flex w-100 justify-content-between p-3">
         <h1>
-          <%= @user.name %>
+          <%= current_user.name %>
         </h1>
         <li>
           <%= link_to 'Mes Agents' , agents_path, class: "btn btn-secondary text-white rounded-2 " %>

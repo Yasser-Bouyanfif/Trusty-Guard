@@ -7,8 +7,7 @@ class PagesController < ApplicationController
 
   def market
     @missions = Mission.all
-    @user = current_user
-    
+    @estimates = current_user.estimates_for_role    
     if current_user
       @estimates = current_user.estimates
     end
