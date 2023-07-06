@@ -1,18 +1,62 @@
+<html>
 
-<% if user_signed_in? %>
-  <%# <h1>Bienvenue sur la page d'accueil de la société <%= current_user.name %></h1>
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="data:image/x-icon;" type="image/x-icon">
+  <!-- We need this line below for responsiveness! -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-  <% if current_user.category == "Security Company" %>
-  <%# <p>je suis un prestataire</p> %>
+<body>
+  <!-- code a Hero / Banner section -->
+  <div class="banner" style="background-image: url(https://f.maformation.fr/edito/sites/3/2020/05/agent-securite.jpg);">
+    <div class="container">
+      <h1 id="h1">TRUSTY GUARD</h1>
+      <br>
+      <h3 id="h3">Identifiez les agents les mieux adaptés à vos besoins.</h3>
+    </div>
+  </div>
+  <!-- code a "How it works" section -->
+  <div class="container2">
+    <div class=" d-flex flex-column align-items-center justify-content-center mt-4">
+      <h2 id="h2">Bienvenue chez Trusty Guard </h2>
+      <div class="d-flex flex-row">
+        <h5>Votre partenaire de confiance pour tous vos besoins en matière de sécurité. Chez Trusty Guard, nous
+          comprenons l'importance cruciale de la sécurité dans tous les aspects de la vie. Que ce soit pour votre
+          entreprise, votre événement spécial ou votre propriété, nous sommes là pour vous offrir une tranquillité
+          d'esprit totale grâce à nos services de sécurité hautement professionnels et fiables.</h5>
+        <img id="icon"
+          src="https://static.vecteezy.com/ti/vecteur-libre/p3/4434587-agent-de-securite-concepts-vectoriel.jpg" alt="">
+      </div>
+    </div>
+    <h4 class="text-center mt-5">Échecs et créativité : un voyage d'apprentissage et d'expression</h4>
+    <br>
+    <div class="cards-landing mt-4 mb-3">
 
-  <%= render "shared/dashboard_prestataire" %>
+      <div class="card-landing shadow">
+        <img
+          src="https://img.uxwing.com/wp-content/themes/uxwing/download/crime-security-military-law/security-guard-icon.svg"
+          alt="">
+        <br>
+        <h4>Transformez l'échec en opportunité</h4>
+        <p>Est-ce que mes actions ont une réelle valeur ? Ne laissez aucun regret vous envahir pour ce que vous avez
+          entrepris. Au contraire, voyez l'échec comme une occasion précieuse d'apprendre et de gagner en expérience.
+          Chaque défaite est une leçon qui vous permet de vous réinventer et de devenir une personne meilleure.</p>
+      </div>
 
-  <% end %>
+      <div class="card-landing shadow">
+        <img class=""
+          src="https://static.vecteezy.com/system/resources/previews/000/350/842/original/contract-vector-icon.jpg"
+          alt="">
+        <br>
+        <h4>Plongez dans votre art : une fusion sans limites</h4>
+        <p>Immergez-vous totalement dans votre art. Éloignez tout doute de votre esprit. En persévérant avec ardeur et
+          dévouement, vous donnerez vie à vos objectifs les plus profonds, créant ainsi une fusion magique entre vous et
+          votre art.</p>
+      </div>
+    </div>
+  </div>
+</body>
 
-  <% if current_user.category == "Customer Company" %>
-
-  <%= render "shared/dashboard_client" %>
-  <% end %>
-  <% else %>
-  <%= render "shared/landing_page" %>
-<% end %>
+</html>

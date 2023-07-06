@@ -1,7 +1,11 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :dashboard ]
+  skip_before_action :authenticate_user!, only: [ :home, :dashboard, :market ]
 
-  def home
+  def user_profile
+
+  end
+
+  def market
     @missions = Mission.all
     @user = current_user
     
@@ -13,9 +17,5 @@ class PagesController < ApplicationController
     @estimates.each do |estimate|
       @chatrooms << estimate.chatroom
     end
-  end
-
-  def user_profile
-    
   end
 end

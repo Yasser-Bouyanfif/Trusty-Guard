@@ -2,58 +2,49 @@
   <div class="card border-light mb-3" style="max-width: 50rem;">
     <div class="card-header p-3">
       <h2>
-        <%= @estimate.user.name %>
+        <%= cl_image_tag current_user.photo.key, crop: :fill %> <%= @estimate.user.name %>
       </h2>
     </div>
     <div class="card-body">
-      <h5 class="card-title">Cher <%= @mission.user.name %>,</h5>
-      <p class="card-text"> Nous vous remercions d'avoir publié votre appel d'offre pour la recherche d'agents de
-        sécurité pour votre prochain événement <%= @mission.event_type %> du <%= @mission.start_date %> au <%=
-              @mission.end_date %>. Nous sommes ravis de vous soumettre notre proposition de devis en réponse à votre
-              demande.
+      <h5 class="card-title"><%= @mission.user.name %>,</h5>
+      <p class="card-text">
+        Nous vous remercions d'avoir publié votre appel d'offre pour la recherche d'agents de sécurité pour votre prochain événement du <%= @mission.start_date.strftime('%d/%m/%Y') %> au <%= @mission.end_date.strftime('%d/%m/%Y') %>. Nous sommes ravis de vous soumettre notre proposition de devis en réponse à votre demande.
 
-              Voici les informations détaillées concernant votre appel d'offre :
+        Voici les informations détaillées concernant votre appel d'offre:
 
-              <ul>
-                <li>Dates : <%= @mission.start_date %> au <%= @mission.end_date %>
-                </li>
-                <li>Adresse: <%= @mission.address %>
-                <li>Nombre d'agents requis : <%= @mission.number_of_agents %>
-                </li>
-                <li>Type d'événement : <%= @mission.event_type %>
-                </li>
-                <li>Budget alloué : <%= @mission.budget %>€</li>
-              </ul>
-              Nous avons pris en compte toutes les spécifications mentionnées dans votre appel d'offre, et nous nous
-              engageons à fournir des agents de sécurité qualifiés et expérimentés pour assurer la sécurité de votre
-              événement.
+        <ul>
+          <li>Dates : <%= @mission.start_date.strftime('%d/%m/%Y') %> au <%= @mission.end_date.strftime('%d/%m/%Y') %></li>
+          <li>Adresse: <%= @mission.address %></li>
+          <li>Nombre d'agents requis : <%= @mission.number_of_agents %>  <i class="fa-solid fa-user fa-xs"></i></li>
+          <li>Type d'événement : <%= @mission.event_type %></li>
+          <li>Budget alloué : <%= @mission.budget %>€</li>
+          <li class="mt-2"><b>Commentaire:</b> <%= @mission.comment %></li>
+        </ul>
 
-              En tant que prestataire de services de recherche d'agents de sécurité, nous comprenons l'importance de la
-              sécurité lors d'un événement. Notre équipe s'engage à offrir un service professionnel, fiable et adapté à
-              vos besoins spécifiques.
+        Nous avons pris en compte toutes les spécifications mentionnées dans votre appel d'offre, et nous nous engageons à fournir des agents de sécurité qualifiés et expérimentés pour assurer la sécurité de votre événement.
 
-              Si vous avez des questions supplémentaires ou si vous souhaitez discuter de certains aspects de notre
-              proposition, n'hésitez pas à nous contacter. Nous sommes impatients de collaborer avec vous pour assurer
-              le succès et la sécurité de votre <%= @mission.event_type %>.
-                <br><br>
-                Cordialement,
+        En tant que prestataire de services de recherche d'agents de sécurité, nous comprenons l'importance de la sécurité lors d'un événement. Notre équipe s'engage à offrir un service professionnel, fiable et adapté à vos besoins spécifiques.
+
+        Si vous avez des questions supplémentaires ou si vous souhaitez discuter de certains aspects de notre proposition, n'hésitez pas à nous contacter. Nous sommes impatients de collaborer avec vous pour assurer le succès et la sécurité de votre <%= @mission.event_type %>.
+
       </p>
+        Cordialement,
       <hr>
-      <div class="p-2">
+      <div class="">
         <h5>Voici la liste de nos agents disponibles:</h5>
-        <%= simple_form_for [@mission, @contract] do |f |%>
-          <ul class="mb-2">
+        <%= simple_form_for [@mission, @contract] do |f| %>
+          <ul class="">
             <% @agents.each do |agent| %>
-              <li><label for="">
-                  <%= agent.first_name %>
-                </label>
+              <li>
+                <label for=""><%= agent.first_name %></label>
                 <input type="checkbox" name="agents[]" id="agent" value="<%= agent.id %>">
               </li>
-              <% end %>
           </ul>
+            <% end %>
+            <hr>
           <%= hidden_field_tag(:estimate_id, @estimate.id) %>
-            <%= f.button :submit, class: "btn btn-success mt-2" %>
-              <% end %>
+          <%= f.button :submit, class: "btn btn-success mt-2" %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -4,15 +4,15 @@
           <h5 class="card-title">Appel d'Offre - Recherche d'Agence de Sécurité</h5>
           <hr>
           <p class="card-text">
-            Nous organisons un festival du <%= @mission.start_date %> au <%= @mission.end_date %> et sommes à la
+            Nous organisons un festival du <%= @mission.start_date.strftime('%d/%m/%Y') %> au <%= @mission.end_date.strftime('%d/%m/%Y') %> et sommes à la
                 recherche
                 d'une agence de sécurité expérimentée. Voici les détails de notre recherche :
                 <ul>
-                  <li>Dates de l'événement : <%= @mission.start_date %> au <%= @mission.end_date %>
+                  <li>Dates de l'événement : <%= @mission.start_date.strftime('%d/%m/%Y') %> au <%= @mission.end_date.strftime('%d/%m/%Y') %>
                   </li>
                   <li>Adresse de la mission : <%= @mission.address %>
                   </li>
-                  <li>Nombre d'agents de sécurité requis : <%= @mission.number_of_agents %>
+                  <li>Nombre d'agents de sécurité requis : <%= @mission.number_of_agents %>  <i class="fa-solid fa-user fa-xs"></i>
                   </li>
                   <li>Type d'événement : <%= @mission.event_type %>
                   </li>
