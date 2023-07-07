@@ -2,9 +2,10 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home, :dashboard, :market ]
 
   def user_profile
-    @missions = current_user.missions
-    @estimates = current_user.estimates
-    @contracts = current_user.contracts
+    # @missions = current_user.missions
+    @mission = Mission.where(user: current_user).last
+    @estimate = Estimate.last
+    @contracts = Mission.where(user: current_user).last.contracts
     @agents = Agent.where(user: current_user)
   end
 

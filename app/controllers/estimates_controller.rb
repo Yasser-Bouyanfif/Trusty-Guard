@@ -12,7 +12,7 @@ class EstimatesController < ApplicationController
     @estimate.mission = @mission
     @estimate.build_chatroom # Create a chatroom for the estimate
     if @estimate.save
-      redirect_to root_path
+      redirect_to market_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,7 +25,7 @@ class EstimatesController < ApplicationController
     @availability = Availability.new
     @entreprise = @estimate.user # CollectionProxy
     e_agents = @entreprise.agents.flat_map { |agent| agent } # To Array
-    @agents = Agent.where(id: e_agents.pluck(:id)) # To ActiveRecord
+    @agents = Agent.where(id: e_agents.pluck(:id)) # To ActiveRecord  
   end
 
   private

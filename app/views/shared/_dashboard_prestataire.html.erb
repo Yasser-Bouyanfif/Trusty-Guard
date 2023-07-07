@@ -67,7 +67,7 @@
 
         <ul class="todo-list">
           <% @estimates.each do |estimate| %>
-            <% last_message=estimate.chatroom.messages.last %>
+            <% last_message = estimate.chatroom.messages.last %>
               <% if estimate.user %>
                 <%= link_to chatroom_path(estimate.chatroom) do %>
                   <li class="not-completed my-3 text-dark">

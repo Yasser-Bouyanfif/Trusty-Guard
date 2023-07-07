@@ -9,7 +9,7 @@
             <%= current_user.name %>
         </h1>
         <li>
-          <%= link_to 'Postuler une mission' , new_mission_path, class: "btn btn-dark text-white active rounded-2" %>
+          <%= link_to 'Postuler une mission' , new_mission_path, class: "btn btn-secondary" %>
         </li>
       </div>
     </div>
@@ -56,30 +56,26 @@
           <h3>Boite de réception</h3>
         </div>
         <ul class="todo-list">
-          <% current_user.missions.each do |mission| %>
-            <% mission.chatrooms.each do |chatroom| %>
-              <% last_message=chatroom.messages.last %>
-                <% if chatroom.estimate.user %>
-                  <%= link_to chatroom_path(chatroom) do %>
-                    <li class="completed my-3 text-dark">
-                      <small>
-                        <p><strong>
-                            <%= chatroom.estimate.user.name %>
-                          </strong></p>
-                      </small>
-                      <% if last_message && last_message.user !=current_user %>
-                        <p>
-                          <%= last_message.content %>
-                        </p>
-                        <% else %>
-                          <p>Pas de nouveau message</p>
-                          <% end %>
-                    </li>
-                    <% end %>
-                      <% end %>
+            <% current_user.missions.each do |mission| %>
+                <% mission.chatrooms.each do |chatroom| %>
+                    <% last_message = chatroom.messages.last %>
+                        <% if chatroom.estimate.user %>
+                        <%= link_to chatroom_path(chatroom) do %>
+                            <li class="completed my-3 text-dark">
+                            <small>
+                                <p><strong><%= chatroom.estimate.user.name %></strong></p>
+                            </small>
+                            <% if last_message && last_message.user != current_user %>
+                                <p><%= last_message.content %></p>
+                            <% else %>
+                                <p>Pas de nouveau message</p>
+                            <% end %>
+                            </li>
                         <% end %>
-                          <% end %>
-        </ul>
+                    <% end %>
+                <% end %>
+            <% end %>
+          </ul>
       </div>
     </div>
   </main>
