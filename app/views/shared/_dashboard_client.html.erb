@@ -1,18 +1,5 @@
 <!-- CONTENT -->
 <section id="content">
-    <!-- MAIN -->
-    <main>
-        <div class="head-title">
-            <div class="d-flex w-100 justify-content-between p-3">
-                <h1>
-                    <%= current_user.name %>
-                </h1>
-                <li>
-                    <%= link_to 'Postuler une mission' , new_mission_path,
-                        class: "btn btn-dark text-white active rounded-2" %>
-                </li>
-            </div>
-        </div>
   <!-- MAIN -->
   <main>
     <div class="head-title">
@@ -21,80 +8,12 @@
           <%= current_user.name %>
         </h1>
         <li>
-          <%= link_to 'Postuler une mission' , new_mission_path, class: "btn btn-dark text-white active rounded-2" %>
+          <%= link_to 'Postuler une mission' , new_mission_path, class: "btn btn-secondary" %>
         </li>
       </div>
     </div>
     <hr>
     <br>
-
-        <div class="table-data">
-            <div class="order shadow-lg">
-                <div class="head">
-                    <h3>Devis reçus</h3>
-                    <a href="#" class="btn-download">
-                        <i class='bx bxs-cloud-download'></i>
-                        <span class="text">Voir tout</span>
-                    </a>
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Commentaire</th>
-                            <th>Voir</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% @estimates.each do |estimate| %>
-                            <tr>
-
-                                <td class="m-2">
-                                    <%= estimate.user.name %>
-                                </td>
-                                <td>
-                                    <%= estimate.comment %>
-                                </td>
-                                <td>
-                                    <%= link_to mission_estimate_path(estimate.mission, estimate) do %>
-                                        <%= content_tag :i, '' , class: 'fa-solid fa-eye text-dark' %>
-                                            <% end %>
-                                </td>
-                            </tr>
-                            <% end %>
-                    </tbody>
-                </table>
-            </div>
-            <div class="todo shadow-lg">
-                <div class="head">
-                    <h3>Boite de réception</h3>
-                </div>
-                <ul class="todo-list">
-                    <% current_user.missions.each do |mission| %>
-                        <% mission.chatrooms.each do |chatroom| %>
-                            <% last_message = chatroom.messages.last %>
-                                <% if chatroom.estimate.user %>
-                                <%= link_to chatroom_path(chatroom) do %>
-                                    <li class="completed my-3 text-dark">
-                                    <small>
-                                        <p><strong><%= chatroom.estimate.user.name %></strong></p>
-                                    </small>
-                                    <% if last_message && last_message.user != current_user %>
-                                        <p><%= last_message.content %></p>
-                                    <% else %>
-                                        <p>Pas de nouveau message</p>
-                                    <% end %>
-                                    </li>
-                                <% end %>
-                            <% end %>
-                        <% end %>
-                    <% end %>
-                </ul>
-            </div>
-        </div>
-    </main>
-    <!-- MAIN -->
-</section>
     <div class="table-data">
       <div class="order shadow-lg">
         <div class="head">
@@ -115,7 +34,6 @@
           <tbody>
             <% @estimates.each do |estimate| %>
               <tr>
-
                 <td class="m-2">
                   <%= estimate.user.name %>
                 </td>
@@ -137,19 +55,26 @@
           <h3>Boite de réception</h3>
         </div>
         <ul class="todo-list">
-          <li class="completed">
-            <small>
-              <p>Nom de l'entreprise</p>
-            </small>
-            <p>message</p>
-          </li>
-          <li class="not-completed">
-            <small>
-              <p>Nom de l'entreprise</p>
-            </small>
-            <p>message</p>
-          </li>
-        </ul>
+            <% current_user.missions.each do |mission| %>
+                <% mission.chatrooms.each do |chatroom| %>
+                    <% last_message = chatroom.messages.last %>
+                        <% if chatroom.estimate.user %>
+                        <%= link_to chatroom_path(chatroom) do %>
+                            <li class="completed my-3 text-dark">
+                            <small>
+                                <p><strong><%= chatroom.estimate.user.name %></strong></p>
+                            </small>
+                            <% if last_message && last_message.user != current_user %>
+                                <p><%= last_message.content %></p>
+                            <% else %>
+                                <p>Pas de nouveau message</p>
+                            <% end %>
+                            </li>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            <% end %>
+          </ul>
       </div>
     </div>
   </main>

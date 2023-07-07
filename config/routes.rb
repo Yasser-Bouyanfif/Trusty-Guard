@@ -16,5 +16,7 @@ Rails.application.routes.draw do
 
   resources :agents
   post '/agents/search', to: 'agents#search'
+
+  get '/user_profile', to: 'pages#user_profile'
   
 end

@@ -14,6 +14,6 @@ class ContractsController < ApplicationController
       estimate.save!
     end
 
-    redirect_to root_path
+    redirect_to user_profile_path
   end
 end

@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :missions
   has_many :agents
-  has_many :estimates
+  has_many :estimates, through: :missions
+  has_many :contracts, through: :missions
   has_many :chatrooms, through: :estimates
   has_one_attached :photo
 

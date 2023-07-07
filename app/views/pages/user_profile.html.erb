@@ -1,1 +1,175 @@
-<h1>PAGE PROFILE PAPI</h1>
+<h1><%= current_user.name %></h1>
+
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <h3>Contrats</h3>
+      <div class="col-md-6">
+        <div class="card mb-4 mb-md-0">
+          <div class="card-body shadow">
+        <% @contracts.each do |contract| %>
+            <p class="mb-1" style="font-size: .90rem;"><%= contract.mission.id %></p>
+            <div class="mb-4" style="height: 5px;">
+              <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+            </div>
+            <p class="mt-4 mb-1" style="font-size: .90rem;"><%= contract.agent.user.name %></p>
+            <div class="mb-4" style="height: 5px;">
+              <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+            </div>
+                <% availability = contract.agent.availabilities.flat_map { |a| a  } %>
+                <%  agent_availability = Availability.where(id: availability.pluck(:id))  %>
+            <p class="mt-4 mb-1" style="font-size: .90rem;"><%= contract.agent.first_name %></p>
+            <div class="mb-4" style="height: 5px;">
+              <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+            </div>
+            <p class="mt-4 mb-1" style="font-size: .90rem;"><%= contract.agent.last_name %></p>
+            <div class="mb-4" style="height: 5px;">
+              <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+            </div>
+        <% agent_availability.each do |a| %>
+            <p class="mt-4 mb-1" style="font-size: .90rem;"> <%= a.start_date.strftime("%d %b %Y") %></p>
+            <div class="mb-4" style="height: 5px;">
+              <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+            </div>
+            <p class="mt-4 mb-1" style="font-size: .90rem;"><%= a.end_date.strftime("%d %b %Y") %></p>
+            <div class="mb-4" style="height: 5px;">
+              <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+            </div>
+            <% end %>
+        <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card mb-4 mb-md-0">
+          <div class="card-body shadow">
+            <div>
+              <p class="mb-1" style="font-size: .90rem;">Contrat n°</p>
+              <div class="mb-4" style="height: 5px;">
+                <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+              </div>
+              <p class="mt-4 mb-1" style="font-size: .90rem;">Agence de sécurité</p>
+              <div class="mb-4" style="height: 5px;">
+                <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+              </div>
+              <p class="mt-4 mb-1" style="font-size: .90rem;">Date de début</p>
+              <div class="mb-4" style="height: 5px;">
+                <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+              </div>
+              <br>
+              <hr>
+              <p class="mt-4 mb-1" style="font-size: .77rem;"></p>
+              <button type="button" class="btn btn-primary">Voir tous les contrats terminés</button>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="d-flex justify-content-between">
+          <h3>Mes missions</h3>
+          <button type="button" class="btn btn-primary mb-2">Voir plus</button>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body shadow">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">N°</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><%= @mission.id %></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Début</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><%= @mission.start_date %></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Fin</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><%= @mission.end_date %></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Type d'évenement</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><%= @mission.event_type %></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Nombre d'agents</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><%= @mission.number_of_agents %></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Address</p>
+              </div>
+              <div class="col-sm-9">
+                <p class="text-muted mb-0"><%= @mission.address %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="d-flex justify-content-between">
+            <h3>Devis reçus</h3>
+            <button type="button" class="btn btn-primary mb-2">Voir plus</button>
+          </div>
+          <div class="card mb-4">
+            <div class="card-body shadow">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">N°</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><%= @estimate.id %></p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Agence de sécurité</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><%= @estimate.user.name %></p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Commentaire</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0"><%= @estimate.comment %></p>
+                </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+

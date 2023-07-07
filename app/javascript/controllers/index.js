@@ -4,10 +4,11 @@
 
 import { application } from "./application"
 
-import FlatpickrController from "./flatpickr_controller"
-application.register("flatpickr", FlatpickrController)
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
+
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
