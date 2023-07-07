@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   get "market", to: "pages#market"
+  get "user_profile", to: "pages#user_profile"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -16,7 +17,4 @@ Rails.application.routes.draw do
 
   resources :agents
   post '/agents/search', to: 'agents#search'
-
-  get '/user_profile', to: 'pages#user_profile'
-  
 end

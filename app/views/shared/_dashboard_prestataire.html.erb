@@ -5,7 +5,8 @@
     <div class="head-title">
       <div class="d-flex w-100 justify-content-between p-3">
         <h1>
-          <%= current_user.name %>
+          <%= cl_image_tag current_user.photo.key, crop: :fill %>
+            <%= current_user.name %>
         </h1>
         <li>
           <%= link_to 'Mes Agents' , agents_path, class: "btn btn-secondary text-white rounded-2 " %>
@@ -44,7 +45,7 @@
                   </p>
                 </td>
                 <td>
-                   <%= mission.start_date.strftime('%d/%m/%Y') %>
+                  <%= mission.start_date.strftime('%d/%m/%Y') %>
                 </td>
                 <td>
                   <%= mission.end_date.strftime('%d/%m/%Y') %>
@@ -63,6 +64,7 @@
         <div class="head">
           <h3>Boite de réception</h3>
         </div>
+
         <ul class="todo-list">
           <% @estimates.each do |estimate| %>
             <% last_message = estimate.chatroom.messages.last %>
@@ -85,7 +87,6 @@
                   <% end %>
                     <% end %>
                       <% end %>
-             
         </ul>
       </div>
     </div>

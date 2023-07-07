@@ -21,6 +21,8 @@ puts "Cleaning database..."
 Message.destroy_all
 Chatroom.destroy_all
 Contract.destroy_all
+Chatroom.destroy_all
+Message.destroy_all
 Estimate.destroy_all
 Availability.destroy_all
 Mission.destroy_all
