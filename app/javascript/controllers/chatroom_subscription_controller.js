@@ -6,26 +6,25 @@ export default class extends Controller {
   static targets = ["messages"]
 
   connect() {
-    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
     this.channel = createConsumer().subscriptions.create(
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
-      { received: data => this.insertMessageAndScrollDown(data) }
-    )
-    console.log(`Subscribe to the chatroom with the id ${this.chatroomIdValue}.`)
+      {
+        received: data => {
+          if (!this.messageAlreadyExists(data)) {
+            this.messagesTarget.insertAdjacentHTML("beforeend", data);
+            this.#insertMessageAndScrollDown();
+          }
+        }
+      }
+    );
+    console.log(`Subscribed to the chatroom with the id ${this.chatroomIdValue}.`);
   }
 
-  insertMessageAndScrollDown(data) {
-    if (!this.messageAlreadyExists(data)) {
-      this.messagesTarget.insertAdjacentHTML("beforeend", data);
-      this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
-    }
+  #insertMessageAndScrollDown() {
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
   }
 
   messageAlreadyExists(data) {
     return Array.from(this.messagesTarget.children).some(child => child.outerHTML === data);
-  }
-
-  resetForm(event) {
-    event.target.reset()
   }
 }
