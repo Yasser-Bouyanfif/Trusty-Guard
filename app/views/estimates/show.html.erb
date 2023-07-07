@@ -33,13 +33,9 @@
       <div class="">
         <h5>Voici la liste de nos agents disponibles:</h5>
         <%= simple_form_for [@mission, @contract] do |f| %>
-          <ul class="">
             <% @agents.each do |agent| %>
-              <li>
-                <label for=""><%= agent.first_name %></label>
-                <input type="checkbox" name="agents[]" id="agent" value="<%= agent.id %>">
-              </li>
-          </ul>
+                <label for=""><%= agent.first_name %> <%= agent.last_name %></label>
+                <input type="checkbox" name="agents[]" id="agent" value="<%= agent.id %>"> | 
             <% end %>
             <hr>
           <%= hidden_field_tag(:estimate_id, @estimate.id) %>

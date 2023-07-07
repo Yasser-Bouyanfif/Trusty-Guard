@@ -1,39 +1,33 @@
-<h1><%= current_user.name %></h1>
-
 <section style="background-color: #eee;">
   <div class="container py-5">
     <div class="row">
-      <h3>Contrats</h3>
+      <h3>Contrat en cours</h3>
       <div class="col-md-6">
         <div class="card mb-4 mb-md-0">
           <div class="card-body shadow">
         <% @contracts.each do |contract| %>
-            <p class="mb-1" style="font-size: .90rem;"><%= contract.mission.id %></p>
+            <p class="mb-1" style="font-size: .90rem;">N° de contrat</p>
             <div class="mb-4" style="height: 5px;">
-              <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+              <p class="mb-1" style="font-size: .77rem;"><%= contract.mission.id %></p>
             </div>
-            <p class="mt-4 mb-1" style="font-size: .90rem;"><%= contract.agent.user.name %></p>
+            <p class="mt-4 mb-1" style="font-size: .90rem;">Nom de l'agence</p>
             <div class="mb-4" style="height: 5px;">
-              <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+              <p class="mb-1" style="font-size: .77rem;"><%= contract.agent.user.name %></p>
             </div>
                 <% availability = contract.agent.availabilities.flat_map { |a| a  } %>
                 <%  agent_availability = Availability.where(id: availability.pluck(:id))  %>
-            <p class="mt-4 mb-1" style="font-size: .90rem;"><%= contract.agent.first_name %></p>
+            <p class="mt-4 mb-1" style="font-size: .90rem;">Agent(s)</p>
             <div class="mb-4" style="height: 5px;">
-              <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
-            </div>
-            <p class="mt-4 mb-1" style="font-size: .90rem;"><%= contract.agent.last_name %></p>
-            <div class="mb-4" style="height: 5px;">
-              <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+              <p class="mb-1" style="font-size: .77rem;"><%= contract.agent.first_name %>  <%= contract.agent.last_name %> <br></p>
             </div>
         <% agent_availability.each do |a| %>
             <p class="mt-4 mb-1" style="font-size: .90rem;"> <%= a.start_date.strftime("%d %b %Y") %></p>
             <div class="mb-4" style="height: 5px;">
-              <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+              <p class="mb-1" style="font-size: .77rem;"></p>
             </div>
             <p class="mt-4 mb-1" style="font-size: .90rem;"><%= a.end_date.strftime("%d %b %Y") %></p>
             <div class="mb-4" style="height: 5px;">
-              <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+              <p class="mb-1" style="font-size: .77rem;"></p>
             </div>
             <% end %>
         <% end %>
@@ -46,20 +40,20 @@
             <div>
               <p class="mb-1" style="font-size: .90rem;">Contrat n°</p>
               <div class="mb-4" style="height: 5px;">
-                <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+                <p class="mb-1" style="font-size: .77rem;"></p>
               </div>
               <p class="mt-4 mb-1" style="font-size: .90rem;">Agence de sécurité</p>
               <div class="mb-4" style="height: 5px;">
-                <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+                <p class="mb-1" style="font-size: .77rem;"></p>
               </div>
               <p class="mt-4 mb-1" style="font-size: .90rem;">Date de début</p>
               <div class="mb-4" style="height: 5px;">
-                <p class="mb-1" style="font-size: .77rem;">Fausses informations</p>
+                <p class="mb-1" style="font-size: .77rem;"></p>
               </div>
               <br>
               <hr>
               <p class="mt-4 mb-1" style="font-size: .77rem;"></p>
-              <button type="button" class="btn btn-primary">Voir tous les contrats terminés</button>
+              <button type="button" class="btn btn-light">Voir tous les contrats terminés</button>
             </div>
           </div>
         </div>
@@ -72,8 +66,8 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="d-flex justify-content-between">
-          <h3>Mes missions</h3>
-          <button type="button" class="btn btn-primary mb-2">Voir plus</button>
+          <h3>Dernière mission</h3>
+          <button type="button" class="btn btn-light mb-2">Voir toutes les missions</button>
         </div>
         <div class="card mb-4">
           <div class="card-body shadow">
@@ -124,7 +118,7 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <p class="mb-0">Address</p>
+                <p class="mb-0">Adresse postale</p>
               </div>
               <div class="col-sm-9">
                 <p class="text-muted mb-0"><%= @mission.address %></p>
@@ -134,8 +128,8 @@
         </div>
         <div class="col-lg-12">
           <div class="d-flex justify-content-between">
-            <h3>Devis reçus</h3>
-            <button type="button" class="btn btn-primary mb-2">Voir plus</button>
+            <h3>Dernier devis reçu</h3>
+            <button type="button" class="btn btn-light mb-2">Voir tous les devis</button>
           </div>
           <div class="card mb-4">
             <div class="card-body shadow">
@@ -150,7 +144,7 @@
               <hr>
               <div class="row">
                 <div class="col-sm-3">
-                  <p class="mb-0">Agence de sécurité</p>
+                  <p class="mb-0">Nom de l'agence</p>
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0"><%= @estimate.user.name %></p>
@@ -165,7 +159,6 @@
                   <p class="text-muted mb-0"><%= @estimate.comment %></p>
                 </div>
               </div>
-              <hr>
             </div>
           </div>
         </div>

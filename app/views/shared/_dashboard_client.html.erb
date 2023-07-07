@@ -5,6 +5,7 @@
     <div class="head-title">
       <div class="d-flex w-100 justify-content-between p-3">
         <h1>
+        <%= cl_image_tag current_user.photo.key, crop: :fill %>
           <%= current_user.name %>
         </h1>
         <li>
