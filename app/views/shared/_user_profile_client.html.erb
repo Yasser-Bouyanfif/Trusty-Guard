@@ -1,17 +1,17 @@
 <h1><%= cl_image_tag current_user.photo.key, crop: :fill %> <%= current_user.name %></h1>
 <% @missions.each do |mission| %>
-<%= mission.id %>
-<%= mission.start_date %>
-<%= mission.end_date %>
-<%= mission.event_type %>
-<%= mission.number_of_agents %>
-<%= mission.address %> <br> <br>
+N°<%= mission.id %>
+Début: <%= mission.start_date %>
+Fin: <%= mission.end_date %>
+Type d'événement: <%= mission.event_type %>
+Nombre d'agents: <%= mission.number_of_agents %>
+Adresse: <%= mission.address %> <br> <br>
 <% end %>
 <hr><br>
 <% @estimates.each do |estimate| %>
-<%= estimate.id %>
-<%= estimate.user.name %>
-<%= estimate.comment %><br> <br>
+N°<%= estimate.id %>
+Agence de sécurité: <%= estimate.user.name %>
+Commentaire: <%= estimate.comment %><br> <br>
 <% end %>
 <hr><br>
 <% @contracts.each do |contract| %>
