@@ -29,17 +29,17 @@
 
       </p>
         Cordialement,
-      <hr>
+  <hr>
       <div class="">
         <h5>Voici la liste de nos agents disponibles:</h5>
         <%= simple_form_for [@mission, @contract] do |f| %>
-            <% @agents.each do |agent| %>
-                <label for=""><%= agent.first_name %> <%= agent.last_name %></label>
-                <input type="checkbox" name="agents[]" id="agent" value="<%= agent.id %>"> | 
-            <% end %>
-            <hr>
+          <% @agents.each do |agent| %>
+            <label for=""><%= agent.first_name %> <%= agent.last_name %></label>
+            <input type="checkbox" name="agents[]" id="agent" value="<%= agent.id %>"> |
+          <% end %>
+          <hr>
           <%= hidden_field_tag(:estimate_id, @estimate.id) %>
-          <%= f.button :submit, class: "btn btn-success mt-2" %>
+          <%= f.button :submit, 'Créer le contrat', class: "btn btn-success mt-2" %>
         <% end %>
       </div>
     </div>

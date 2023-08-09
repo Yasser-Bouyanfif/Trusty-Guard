@@ -22,13 +22,18 @@ class EstimatesController < ApplicationController
     @estimate = Estimate.find(params[:id])
     @mission = Mission.find(params[:mission_id])
     @contract = Contract.new
-    @availability = Availability.new
-    @entreprise = @estimate.user # CollectionProxy
-    e_agents = @entreprise.agents.flat_map { |agent| agent } # To Array
-    @agents = Agent.where(id: e_agents.pluck(:id)) # To ActiveRecord  
+    @agents = available_agents
   end
 
+
   private
+
+  def available_agents
+    @estimate.user.agents.left_outer_joins(:availabilities)
+                        .where('availabilities.end_date IS NULL OR availabilities.end_date < ?', Date.today)
+                        .distinct
+  end
+
 
   def estimate_params
     params.require(:estimate).permit(:comment, :mission_id)

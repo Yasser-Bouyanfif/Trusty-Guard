@@ -27,7 +27,7 @@
       </tr>
     </thead>
     <tbody id="agents-table">
-      <% @agents.each do |agent| %>
+      <% current_user.agents.each do |agent| %>
         <tr>
           <td><%= agent.last_name %></td>
           <td><%= agent.first_name %></td>
